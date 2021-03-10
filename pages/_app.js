@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 
@@ -20,9 +20,13 @@ Router.events.on('routeChangeComplete', () =>  NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 const MyApp = ({ Component, pageProps }) => {
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = useState(null);
+  const [cart, setCart] = useState({
+    items: [],
+    total: 0
+  });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const token = Cookie.get("token");
 
     if (token) {
@@ -45,12 +49,83 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const cart = Cookie.get("cart");
+
+    if (typeof cart === "string" && cart !== "undefined") {
+      JSON.parse(cart).forEach((item) => {
+        setCart({
+          cart: { items: JSON.parse(cart), total: item.price * item.quantity },
+        });
+      });
+    }
+  }, [cart]);
+
+
+  const addItem = (item) => {
+    console.log(cart);
+    let { items } = cart;
+    //check for item already in cart
+    //if not in cart, add item if item is found increase quanity ++
+    const newItem = items.find((i) => i.id === item.id);
+    // if item is not new, add to cart, set quantity to 1
+    if (!newItem) {
+      //set quantity property to 1
+      item.quantity = 1;
+      setCart(c => 
+        c = {
+          items: [...items, item],
+          total: cart.total + item.price,
+      }, Cookie.set("cart", cart.items));
+    } else {
+      setCart(c => 
+        c = {
+          items: cart.items.map((item) =>
+            item.id === newItem.id
+              ? Object.assign({}, item, { quantity: item.quantity + 1 })
+              : item
+          ),
+          total: cart.total + item.price,
+        }, Cookie.set("cart", cart.items));
+    }
+  };
+  const removeItem = (item) => {
+    let { items } = cart;
+    //check for item already in cart
+    //if not in cart, add item if item is found increase quanity ++
+    const newItem = items.find((i) => i.id === item.id);
+    if (newItem.quantity > 1) {
+      setCart(c => 
+        c = {
+          items: this.state.cart.items.map((item) =>
+            item.id === newItem.id
+              ? Object.assign({}, item, { quantity: item.quantity - 1 })
+              : item
+          ),
+          total: this.state.cart.total - item.price,
+        }, Cookie.set("cart", items));
+    } else {
+      const items = [...cart.items];
+      const index = items.findIndex((i) => i.id === newItem.id);
+
+      items.splice(index, 1);
+      setCart(c => 
+        c = { cart: { items: items, total: cart.total - item.price } },
+        Cookie.set("cart", items)
+      );
+    }
+  }
+
+
   return (
     <AppContext.Provider 
       value={{
         user: user,
         isAuthenticated: !!user,
         setUser: setUser,
+        cart: cart,
+        addItem: addItem,
+        removeItem: removeItem,
       }}>
       <Head>
         <meta name="dev:creator" content="Elomar" />

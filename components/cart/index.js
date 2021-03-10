@@ -8,6 +8,7 @@ import AppContext from "../../context/AppContext"
 const Cart = () => {
   const appContext = useContext(AppContext);
   const router = useRouter();
+  console.log(appContext);
 
   const { cart, isAuthenticated } = appContext;
 

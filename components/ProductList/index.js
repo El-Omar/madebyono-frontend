@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
 import Link from "next/link";
 import Image from "next/image";
+
+import AppContext from "../../context/AppContext"
 
 // import {
 //   Button,
@@ -33,6 +36,9 @@ const QUERY = gql`
 `;
 
 const ProductList = () => {
+  const appContext = useContext(AppContext);
+  const { addItem, removeItem } = appContext;
+
   const { loading, error, data } = useQuery(QUERY);
   if (error) return "Error loading products";
   if (loading) return <h2>Loading...</h2>;
@@ -62,7 +68,10 @@ const ProductList = () => {
                     </Link>
                     <div className="d-flex justify-content-between align-items-center">
                       <strong className="price">&euro; { product.price.toFixed(2) }</strong>
-                      <button className="btn add-to-cart">Add to cart</button>
+                      <button className="btn add-to-cart" onClick={() => addItem({
+                        id: product.id,
+                        price: product.price
+                      })}>Add to cart</button>
                     </div>
                   </article>
                 ))
