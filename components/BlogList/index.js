@@ -40,13 +40,16 @@ const BlogList = props => {
         <Container className="main__container">
           <header className="title">
             <h1>
-              <span className="title--collabs">Collabs</span>
-              <span className="title--projects"> &amp;<br />Projects</span>
+              <span className="title--collabs">Blogs</span>
+              {/* <span className="title--projects"> &amp;<br />Projects</span> */}
             </h1>
           </header>
           {
             searchQuery.map(blog => (
               <div className="project__wrap" key={ blog.id }>
+                <Link href={`/blog/${blog.id}/`}>
+                  <a className="cover--link"></a>
+                </Link>
                 <article className="project" key={ blog.id }>
                   <header className="project__header">
                     <strong className="project__year">{ getDate(blog.createdAt) }</strong>

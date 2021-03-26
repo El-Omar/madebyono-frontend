@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import { useRouter } from "next/router";
 import AppContext from "../context/AppContext";
 import { logout } from "../lib/auth";
 
@@ -11,8 +11,19 @@ import { Container as Styles } from '../styles/components/layoutStyle';
 const Layout = props => {
   const title = "Made by Ono";
   const [bodyOverlay, setBodyOverlay] = useState(false);
-
   const { user, setUser } = useContext(AppContext);
+
+  const { pathname } = useRouter();
+  const [hideFooter, setHideFooter] = useState(false);
+
+  useEffect(() => {
+    if (pathname === "/" || pathname === "") {
+      setHideFooter(true);      
+    } else {
+      setHideFooter(false);
+    }
+  }, [pathname]);
+  
 
   return (
     <Styles className={`${props.children.type?.name?.toString().toLowerCase()}${bodyOverlay ? ' no-scroll' : ''}`}>
@@ -56,7 +67,7 @@ const Layout = props => {
       <div className="children__wrapper">
         { props.children }
       </div>
-      <Footer />
+      { !hideFooter && <Footer /> }
     </Styles>
   );
 }

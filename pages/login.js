@@ -23,7 +23,7 @@ function Login(props) {
   
   useEffect(() => {
     if (appContext.isAuthenticated) {
-      router.push("/"); // redirect if you're already logged in
+      router.push("/cart"); // redirect if you're already logged in
     }
   }, []);
 

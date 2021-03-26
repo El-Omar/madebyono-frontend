@@ -6,18 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import AppContext from "../../context/AppContext"
-
-// import {
-//   Button,
-//   Card,
-//   CardBody,
-//   CardImg,
-//   CardText,
-//   CardTitle,
-//   Col,
-//   Row,
-//   Container
-// } from "reactstrap";
+import { useStore } from "../../store/cartStore";
 
 import { Container as Styles } from "../../styles/components/projectStyle";
 
@@ -37,7 +26,7 @@ const QUERY = gql`
 
 const ProductList = () => {
   const appContext = useContext(AppContext);
-  const { addItem, removeItem } = appContext;
+  const { addItem } = useStore();
 
   const { loading, error, data } = useQuery(QUERY);
   if (error) return "Error loading products";
@@ -67,11 +56,10 @@ const ProductList = () => {
                       </a>
                     </Link>
                     <div className="d-flex justify-content-between align-items-center">
-                      <strong className="price">&euro; { product.price.toFixed(2) }</strong>
-                      <button className="btn add-to-cart" onClick={() => addItem({
-                        id: product.id,
-                        price: product.price
-                      })}>Add to cart</button>
+                      <button className="btn add-to-cart" onClick={() => addItem(product)}>
+                        <strong className="price">&euro; { product.price.toFixed(2) }</strong>
+                        <strong className="add-title">Add to cart</strong>  
+                      </button>
                     </div>
                   </article>
                 ))

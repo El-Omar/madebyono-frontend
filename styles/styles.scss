@@ -71,6 +71,16 @@ a {
   margin-right: -1rem;
 }
 
+.no-results-found {
+  font-style: italic;
+  font-size: 18px;
+}
+
+.w-100 {
+  width: 100%;
+  padding: 1rem;
+}
+
 .w-50 {
   width: 50%;
   padding: 1rem;
@@ -95,11 +105,113 @@ a {
   cursor: pointer;
 }
 
+// SLIDER
+
+.slider__controllers {
+  z-index: 5;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  
+  &__next, &__previous {
+    /* font-size: 24px; */
+    display: block;
+    width: 20px;
+    height: 30px;
+    border: 16px solid transparent;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__previous {
+    border-left-color: black;
+  }
+
+  &__next {
+    border-right-color: black;
+  }
+}
+
+.slider__wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+  position: absolute;
+  transition: opacity .4s ease;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  
+  &-active {
+    opacity: 1;
+  }
+}
+
+.slide__img {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 3%;
+  display: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 6px;
+  user-select: none;
+  cursor: pointer;
+  background: black;
+
+  &-active {
+    width: 8px;
+    height: 8px;
+    background: #3f90de;
+  }
+}
+
+
+
 @media (max-width: 768px) {
 
-  .w-25, .w-33 {
-    width: 100%;
+  .w-25, .w-33, .w-50 {
+    width: 100% !important;
   }
+}
+
+input {
+  padding: .8rem 1rem;
+}
+
+.btn--black {
+  background: #222;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 1.4rem;
+  padding: .75rem 1rem;
 }
 
 .thumbnail {
@@ -148,15 +260,19 @@ a {
   text-align: center;
 }
 
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #3f90de;
-  font-family: Avenir;
-}
-
 .price--heading {
   font-size: 26px;
+}
+
+.cover--link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  z-index: 100;
 }
 
 .description {

@@ -11,11 +11,6 @@ const Blog = () => {
 
   return (
     <>
-      <div className="search">
-        <input type="text" onChange={({ target }) => 
-          setTimeout(setQuery(q => q = target.value.toLocaleLowerCase()), 250)} 
-          value={query} />
-      </div>
       <BlogList search={query} />
     </>
   );

@@ -12,7 +12,18 @@ app.prepare()
     server.get('/shop/:id', (req, res) => {
 			const actualPage = '/detail/product';
 			const queryParams = { id: req.params.id };
-			console.dir("req.params.id = " + JSON.stringify(req.params.id));
+			app.render(req, res, actualPage, queryParams);
+		});
+
+		server.get('/projects/:slug', (req, res) => {
+			const actualPage = '/detail/project';
+			const queryParams = { slug: req.params.slug }
+			app.render(req, res, actualPage, queryParams);
+		});
+		
+		server.get('/blog/:id', (req, res) => {
+			const actualPage = '/detail/blog';
+			const queryParams = { id: req.params.id }
 			app.render(req, res, actualPage, queryParams);
 		});
 

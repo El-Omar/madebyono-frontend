@@ -1,132 +1,178 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Button, Card, CardBody, CardTitle, Badge } from "reactstrap";
 
-import AppContext from "../../context/AppContext"
+import Cookie from "js-cookie";
+import AppContext from "../../context/AppContext";
+import { useStore } from "../../store/cartStore";
+
+import { Styles } from "../../styles/components/cartStyle";
 
 const Cart = () => {
-  const appContext = useContext(AppContext);
   const router = useRouter();
-  console.log(appContext);
+  const appContext = useContext(AppContext);
+  const { isAuthenticated } = appContext;
+  const { items, addItem, removeItem, deleteItem, total, refreshCart } = useStore();
 
-  const { cart, isAuthenticated } = appContext;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024);
+    const cart = Cookie.get("cart");
+
+    if (typeof cart === "string" && cart !== "undefined") {
+      let total = 0;
+      JSON.parse(cart).forEach((item) => {
+        total += (item.price * item.quantity);
+      });
+
+      console.log(JSON.parse(cart))
+      refreshCart(JSON.parse(cart), total);
+    }
+  }, []);
+
+  console.log(total)
 
   return (
-    <div>
-      <Card style={{ padding: "10px 5px" }} className="cart">
-        <CardTitle style={{ margin: 10 }}>Your Order:</CardTitle>
-        <hr />
-        <CardBody style={{ padding: 10 }}>
-          <div style={{ marginBottom: 6 }}>
-            <small>Items:</small>
+    <Styles>
+      <div className="main__container">
+        <div className="container">
+          <div className="cart__heading">
+            <button onClick={() => window.history.back()}>BACK</button>
+            <Link href="/shop">
+              <a>Continue Shopping</a>
+            </Link>
           </div>
-          <div>
-            {cart.items
-              ? cart.items.map((item) => {
-                  if (item.quantity > 0) {
-                    return (
-                      <div
-                        className="items-one"
-                        style={{ marginBottom: 15 }}
-                        key={item.id}
-                      >
-                        <div>
-                          <span id="item-price">&nbsp; ${item.price}</span>
-                          <span id="item-name">&nbsp; {item.name}</span>
-                        </div>
-                        <div>
-                          <Button
-                            style={{
-                              height: 25,
-                              padding: 0,
-                              width: 15,
-                              marginRight: 5,
-                              marginLeft: 10,
-                            }}
-                            onClick={() => appContext.addItem(item)}
-                            color="link"
-                          >
-                            +
-                          </Button>
-                          <Button
-                            style={{
-                              height: 25,
-                              padding: 0,
-                              width: 15,
-                              marginRight: 10,
-                            }}
-                            onClick={() => appContext.removeItem(item)}
-                            color="link"
-                          >
-                            -
-                          </Button>
-                          <span style={{ marginLeft: 5 }} id="item-quantity">
-                            {item.quantity}x
-                          </span>
+
+          { !isMobile && (
+            <table className="cart__items">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                { items.map(item => (
+                  <tr key={item.id}>
+                    <td>
+                        <button className="remove-item" aria-label="Remove item" onClick={() => deleteItem(item)}>x</button>
+                    </td>
+                    <td>
+                      <div className="item__info">
+                        <div className="thumbnail thumbnail--3by4">
+                          <Link href={`/shop/${item.id}/`}>
+                            <a className="cover--link"></a>
+                          </Link>
+                          <img src={`${process.env.NEXT_PUBLIC_API_URL}${item.thumbnail.url}`} alt="Image"/>
                         </div>
                       </div>
-                    );
-                  }
-                })
-              : null}
-            {isAuthenticated ? (
-              cart.items.length > 0 ? (
-                <div>
-                  <Badge style={{ width: 200, padding: 10 }} color="light">
-                    <h5 style={{ fontWeight: 100, color: "gray" }}>Total:</h5>
-                    <h3>${appContext.cart.total.toFixed(2)}</h3>
-                  </Badge>
-                  {router.pathname === "/restaurants" && (
-                    <div
-                      style={{
-                        marginTop: 10,
-                        marginRight: 10,
-                      }}
-                    >
-                      <Link href="/checkout">
-                        <Button style={{ width: "100%" }} color="primary">
-                          <a>Order</a>
-                        </Button>
+                    </td>
+
+                    <td>
+                      <Link href={`/shop/${item.id}/`}>
+                        <a>{ item.name }</a>
                       </Link>
-                    </div>
-                  )}
+                    </td>
+                    <td>&euro; {item.price.toFixed(2)}</td>
+                    <td>
+                      <div className="item__amount__info">
+                        <button className="item-adjust-amount decrease-amount" onClick={() => removeItem(item)}>-</button>
+                        <strong className="item-amount">{ item.quantity }</strong>
+                        <button className="item-adjust-amount increase-amount" onClick={() => addItem(item)}>+</button>
+                      </div>
+                    </td>
+                    <td>
+                      <strong className="item-subtotal">&euro; { (item.price * item.quantity).toFixed(2) }</strong>
+                    </td>
+                  </tr>
+                )) }
+              </tbody>
+            </table>
+          ) }
+
+          { !items.length && <div className="w-100">
+              <h2 className="no-results-found">No items</h2>
+            </div> }
+          
+          { isMobile && items.map(item =>
+            <div className="item-component" key={item.id}>
+              <div className="item__info">
+                <div className="thumbnail thumbnail--3by4">
+                  <Link href={`/shop/`}>
+                    <a className="cover--link"></a>
+                  </Link>
+                  <img src={`${process.env.NEXT_PUBLIC_API_URL}${item.thumbnail.url}`} alt="Image"/>
                 </div>
-              ) : (
-                <>
-                  {router.pathname === "/checkout" && (
-                    <small
-                      style={{ color: "blue" }}
-                      onClick={() => window.history.back()}
-                    >
-                      back to restaurant
-                    </small>
-                  )}
-                </>
-              )
-            ) : (
-              <h5>Login to Order</h5>
-            )}
-          </div>
-          {console.log(router.pathname)}
-        </CardBody>
-      </Card>
-      <style jsx>{`
-        #item-price {
-          font-size: 1.3em;
-          color: rgba(97, 97, 97, 1);
-        }
-        #item-quantity {
-          font-size: 0.95em;
-          padding-bottom: 4px;
-          color: rgba(158, 158, 158, 1);
-        }
-        #item-name {
-          font-size: 1.3em;
-          color: rgba(97, 97, 97, 1);
-        }
-      `}</style>
-    </div>
+                <button className="remove-item" aria-label="Remove item" onClick={() => deleteItem(item)}>x</button>
+              </div>
+
+              <div className="item__detail-row">
+                <strong className="caption">Product:</strong>
+                <strong className="value">{item.name}</strong>
+              </div>
+
+              <div className="item__detail-row">
+                <strong className="caption">Price:</strong>
+                <strong className="value">&euro; {item.price}</strong>
+              </div>
+
+              <div className="item__detail-row">
+                <strong className="caption">Quantity:</strong>
+                <div className="item__amount__info">
+                  <button className="item-adjust-amount decrease-amount" onClick={() => removeItem(item)}>-</button>
+                  <strong className="item-amount">{ item.quantity }</strong>
+                  <button className="item-adjust-amount increase-amount" onClick={() => addItem(item)}>+</button>
+                </div>
+              </div>
+
+              <div className="item__detail-row">
+                <strong className="caption">Subtotal:</strong>
+                <strong className="subtotal">&euro; { (item.price * item.quantity).toFixed(2) }</strong>
+              </div>
+            </div>
+          ) }
+
+          { items.length > 0 && <>
+            <div className="coupon__wrapper">
+              <input type="text" name="coupon" className="coupon" placeholder="Coupon code" />
+              <button className="btn btn--black">APPLY COUPON</button>
+            </div>
+          
+            <div className="col-row total__wrapper">
+              <div className="w-50">
+                <div className="total__wrapper">
+                  <h2>Cart totals</h2>
+                  <div className="totals">
+                    <div className="total">
+                      <strong className="caption">Subtotal</strong>
+                      <strong className="value">&euro; {total.toFixed(2)}</strong>
+                    </div>
+                    <div className="total total--vat">
+                      <strong className="caption">VAT 21%</strong>
+                      <strong className="value">&euro; { (total * .21).toFixed(2) }</strong>
+                    </div>
+                    <div className="total">
+                      <strong className="caption">Total</strong>
+                      <strong className="value">&euro; { ((total * .21) + total).toFixed(2) }</strong>
+                    </div>
+                    <Link href={isAuthenticated ? "/checkout" : "/login"}>
+                      <a className="btn btn--black">PROCEED TO CHECKOUT</a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>}
+
+
+        </div>
+      </div>
+    </Styles>
   );
 };
 

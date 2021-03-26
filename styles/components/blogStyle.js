@@ -99,7 +99,7 @@ export const Container = styled.div`
       transition: all .58s cubic-bezier(.59, .01, .28, 1);
       transition-delay: 300ms;
       /* opacity: 0; */
-      transform: translateY(200%);
+      /* transform: translateY(200%); */
 
       &.animated {
         opacity: 1;
@@ -114,7 +114,7 @@ export const Container = styled.div`
       transition-delay: 200ms;
       /* opacity: 0; */
       display: inline-block;
-      transform: translateY(400%);
+      /* transform: translateY(400%); */
 
       &.animated {
         opacity: 1;

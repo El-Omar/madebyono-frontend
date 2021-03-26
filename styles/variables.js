@@ -3,7 +3,8 @@ const _cc = color => color.replace(`#`, `%23`);
 export const Colors = {
   yellow: '#f7eb0b',
   blue: '#3f90de',
-  purple: '#d63187'
+  purple: '#d63187',
+  gray: `#8c8c8c`,
 };
 
 export const Svgs = {
@@ -12,5 +13,11 @@ export const Svgs = {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    `
+  `,
+  arrow: (color = ``) => `
+    background-image: url("data:image/svg+xml,%3C!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In --%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' fill='${_cc(color)}' width='75.8px' height='18.9px' viewBox='0 0 75.8 18.9' style='overflow:visible;enable-background:new 0 0 75.8 18.9;' xml:space='preserve'%3E%3Cdefs%3E%3C/defs%3E%3Cpath d='M8.8,18.6c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4l-6.8-6.7h71.4c0.6,0,1-0.4,1-1s-0.4-1-1-1H3.4 l6.8-6.8c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L0.3,8.8c-0.4,0.4-0.4,1,0,1.4L8.8,18.6z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  `,
 };
