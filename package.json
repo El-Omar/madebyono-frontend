@@ -23,7 +23,8 @@
   "scripts": {
     "develop": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js -p $PORT",
+    "heroku-postbuild": "next build"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0"
