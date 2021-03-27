@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { Styles } from "../../styles/components/productDetailStyle";
 import carousel from '../../lib/carousel';
 
+import path from "../../lib/path";
+
 import { useStore } from "../../store/cartStore";
 
 const GET_PRODUCT_DETAIL = gql`
@@ -61,7 +63,7 @@ const ProductDetail = () => {
               </a>
             </Link>
             <div className="thumbnail thumbnail--9by16">
-              <img src={`${process.env.NEXT_PUBLIC_API_URL}${product.thumbnail.url}`} />
+              <img src={path(product.thumbnail.url)} />
             </div>
             <div className="product__heading">
               { product.oldprice && 
@@ -93,7 +95,7 @@ const ProductDetail = () => {
             </div>
 
             { product.images[0] && <div className="thumbnail thumbnail--9by16">
-              <img src={`${process.env.NEXT_PUBLIC_API_URL}${product.images[0].url}`} />
+              <img src={path(product.images[0].url)} />
             </div> }
             
 

@@ -6,6 +6,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import InjectedCheckoutForm from "../components/checkout/CheckoutForm";
 import AppContext from "../context/AppContext";
 
+const STRIPE_PK = process.env.NEXT_PUBLIC_STRIPE_PK || "pk_test_51IYzxPDiW4xe7ZTqTx0JTxUbzi55iNuZQ5yz4RAXCaZMi1Jm3BKcMxYzo05dFxbAkZXimkAoENeJB0wMsP5baVLe00eyEGxFlq";
+
 import Cart from "../components/cart/";
 
 function Checkout() {
@@ -15,7 +17,7 @@ function Checkout() {
   const { isAuthenticated } = appContext;
 
   // load stripe to inject into elements components
-  const stripePromise = loadStripe("pk_test_51IYzxPDiW4xe7ZTqTx0JTxUbzi55iNuZQ5yz4RAXCaZMi1Jm3BKcMxYzo05dFxbAkZXimkAoENeJB0wMsP5baVLe00eyEGxFlq");
+  const stripePromise = loadStripe(STRIPE_PK);
 
   return (
     <Row>

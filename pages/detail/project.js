@@ -7,6 +7,8 @@ import Link from "next/link";
 import { Styles } from '../../styles/components/projectDetailsStyle';
 import carousel from '../../lib/carousel';
 
+import path from "../../lib/path";
+
 const GET_PROJECT_DETAIL = gql`
   query($slug: String!) {
     projects(where: {slug: $slug}) {
@@ -55,11 +57,11 @@ const ProjectDetail = () => {
         <article className="project__images">
           <div className="slider__wrap">
           <div className={`slide slide-active`} data-id="1">
-            <div className="slide__img" style={{ backgroundImage: "url(" + process.env.NEXT_PUBLIC_API_URL + project.thumbnail.url + ")" }}></div>
+            <div className="slide__img" style={{ backgroundImage: "url(" + path(project.thumbnail.url) + ")" }}></div>
           </div>
           { project.images.map((img, i) => (
             <div key={i} className={`slide`} data-id={i + 2}>
-              <div className="slide__img" style={{ backgroundImage: "url(" + process.env.NEXT_PUBLIC_API_URL + img.url + ")" }}></div>
+              <div className="slide__img" style={{ backgroundImage: "url(" + path(img.url) + ")" }}></div>
             </div>
           )) }
 

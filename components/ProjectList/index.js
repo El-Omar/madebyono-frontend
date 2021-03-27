@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import path from "../../lib/path";
+
 const ProjestList = ({ projects }) => {
   
   if (projects && projects.length) {
@@ -10,7 +12,7 @@ const ProjestList = ({ projects }) => {
           <Link href={`/projects/${project.slug}/`}>
             <a>
               <div className="thumbnail thumbnail--3by4">
-                <img src={`${process.env.NEXT_PUBLIC_API_URL}${project.thumbnail.url}`} />
+                <img src={path(project.thumbnail.url)} />
               </div>
             </a>
           </Link>

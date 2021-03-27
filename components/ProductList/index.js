@@ -5,6 +5,8 @@ import { gql } from "apollo-boost";
 import Link from "next/link";
 import Image from "next/image";
 
+import path from "../../lib/path";
+
 import AppContext from "../../context/AppContext"
 import { useStore } from "../../store/cartStore";
 
@@ -50,7 +52,7 @@ const ProductList = () => {
                     <Link href={`/shop/${product.id}/`}>
                       <a>
                         <div className="thumbnail thumbnail--3by4">
-                          <img src={`${process.env.NEXT_PUBLIC_API_URL}${product.thumbnail.url}`} />
+                          <img src={path(product.thumbnail.url)} />
                         </div>
                         <h2 className="item__heading">{ product.name }</h2>
                       </a>

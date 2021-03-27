@@ -4,6 +4,7 @@ import { gql } from "apollo-boost";
 import Link from "next/link";
 
 import { Styles } from "../../styles/components/productDetailStyle";
+import path from "../../lib/path";
 
 const GET_BLOG_DETAIL = gql`
   query($id: ID!) {
@@ -47,7 +48,7 @@ const BlogDetail = () => {
               </a>
             </Link>
             <div className="thumbnail thumbnail--9by16">
-              <img src={`${process.env.NEXT_PUBLIC_API_URL}${blog.thumbnail.url}`} />
+              <img src={path(blog.thumbnail.url)} />
             </div>
             <div className="col-row">
               <div className="w-100">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import getDate from "../../lib/getDate";
+import path from "../../lib/path";
 
 import { Container } from "../../styles/components/blogStyle";
 
@@ -56,7 +57,7 @@ const BlogList = props => {
                     <h2 className="project__title">{ blog.title }</h2>
                   </header>
                   <div className="project__thumbnail">
-                    <img src={`${process.env.NEXT_PUBLIC_API_URL}${blog.thumbnail.url}`} />
+                    <img src={path(blog.thumbnail.url)} />
                   </div>
                 </article>
               </div>
