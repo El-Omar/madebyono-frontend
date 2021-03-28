@@ -65,7 +65,7 @@ const Cart = ({ isInCheckout }) => {
                     </div>
                     { !isInCheckout && 
                     <Link href={isAuthenticated ? "/checkout" : "/login"}>
-                      <a className="btn btn--black" style={!isInCheckout ? { marginTop: '1rem', display: 'block', } : {}}>PROCEED TO CHECKOUT</a>
+                      <a className="btn btn--black" style={!isInCheckout ? { margin: '1rem 0', display: 'block', } : {}}>PROCEED TO CHECKOUT</a>
                     </Link> }
                   </div>
                 </div>
