@@ -158,12 +158,5 @@ export const Styles = styled.div`
       display: inline-block;
       width: 120px;
     }
-
-    .btn--black {
-      width: 100%;
-      display: block;
-      margin: 1rem 0;
-      text-align: center;
-    }
   }
 `;

@@ -1,23 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import Cookie from "js-cookie";
 import AppContext from "../../context/AppContext";
 import { useStore } from "../../store/cartStore";
 
 import { Styles } from "../../styles/components/cartStyle";
+import CartItems from "./CartItems";
 
-const Cart = () => {
-  const router = useRouter();
+const Cart = ({ isInCheckout }) => {
   const appContext = useContext(AppContext);
   const { isAuthenticated } = appContext;
-  const { items, addItem, removeItem, deleteItem, total, refreshCart } = useStore();
-
-  const [isMobile, setIsMobile] = useState(false);
+  const { items, total, refreshCart } = useStore();
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 1024);
     const cart = Cookie.get("cart");
 
     if (typeof cart === "string" && cart !== "undefined") {
@@ -26,17 +22,15 @@ const Cart = () => {
         total += (item.price * item.quantity);
       });
 
-      console.log(JSON.parse(cart))
       refreshCart(JSON.parse(cart), total);
     }
   }, []);
 
-  console.log(total)
-
   return (
     <Styles>
-      <div className="main__container">
-        <div className="container">
+      <div className={!isInCheckout ? "main__container" : ""}>
+        <div className={!isInCheckout ? "container" : ""}>
+          
           <div className="cart__heading">
             <button onClick={() => window.history.back()}>BACK</button>
             <Link href="/shop">
@@ -44,107 +38,16 @@ const Cart = () => {
             </Link>
           </div>
 
-          { !isMobile && (
-            <table className="cart__items">
-              <thead>
-                <tr>
-                  <th>&nbsp;</th>
-                  <th>&nbsp;</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
-                </tr>
-              </thead>
-              <tbody>
-                { items.map(item => (
-                  <tr key={item.id}>
-                    <td>
-                        <button className="remove-item" aria-label="Remove item" onClick={() => deleteItem(item)}>x</button>
-                    </td>
-                    <td>
-                      <div className="item__info">
-                        <div className="thumbnail thumbnail--3by4">
-                          <Link href={`/shop/${item.id}/`}>
-                            <a className="cover--link"></a>
-                          </Link>
-                          <img src={`${process.env.NEXT_PUBLIC_API_URL}${item.thumbnail.url}`} alt="Image"/>
-                        </div>
-                      </div>
-                    </td>
+          <CartItems isInCheckout={isInCheckout} />
 
-                    <td>
-                      <Link href={`/shop/${item.id}/`}>
-                        <a>{ item.name }</a>
-                      </Link>
-                    </td>
-                    <td>&euro; {item.price.toFixed(2)}</td>
-                    <td>
-                      <div className="item__amount__info">
-                        <button className="item-adjust-amount decrease-amount" onClick={() => removeItem(item)}>-</button>
-                        <strong className="item-amount">{ item.quantity }</strong>
-                        <button className="item-adjust-amount increase-amount" onClick={() => addItem(item)}>+</button>
-                      </div>
-                    </td>
-                    <td>
-                      <strong className="item-subtotal">&euro; { (item.price * item.quantity).toFixed(2) }</strong>
-                    </td>
-                  </tr>
-                )) }
-              </tbody>
-            </table>
-          ) }
-
-          { !items.length && <div className="w-100">
-              <h2 className="no-results-found">No items</h2>
-            </div> }
-          
-          { isMobile && items.map(item =>
-            <div className="item-component" key={item.id}>
-              <div className="item__info">
-                <div className="thumbnail thumbnail--3by4">
-                  <Link href={`/shop/`}>
-                    <a className="cover--link"></a>
-                  </Link>
-                  <img src={`${process.env.NEXT_PUBLIC_API_URL}${item.thumbnail.url}`} alt="Image"/>
-                </div>
-                <button className="remove-item" aria-label="Remove item" onClick={() => deleteItem(item)}>x</button>
-              </div>
-
-              <div className="item__detail-row">
-                <strong className="caption">Product:</strong>
-                <strong className="value">{item.name}</strong>
-              </div>
-
-              <div className="item__detail-row">
-                <strong className="caption">Price:</strong>
-                <strong className="value">&euro; {item.price}</strong>
-              </div>
-
-              <div className="item__detail-row">
-                <strong className="caption">Quantity:</strong>
-                <div className="item__amount__info">
-                  <button className="item-adjust-amount decrease-amount" onClick={() => removeItem(item)}>-</button>
-                  <strong className="item-amount">{ item.quantity }</strong>
-                  <button className="item-adjust-amount increase-amount" onClick={() => addItem(item)}>+</button>
-                </div>
-              </div>
-
-              <div className="item__detail-row">
-                <strong className="caption">Subtotal:</strong>
-                <strong className="subtotal">&euro; { (item.price * item.quantity).toFixed(2) }</strong>
-              </div>
-            </div>
-          ) }
-
-          { items.length > 0 && <>
-            <div className="coupon__wrapper">
+          { items.length > 0 && <div style={{ display: 'flex', flexFlow: 'column' }}>
+            <div className="coupon__wrapper" style={{ order: isInCheckout ? 2 : 0  }}>
               <input type="text" name="coupon" className="coupon" placeholder="Coupon code" />
-              <button className="btn btn--black">APPLY COUPON</button>
+              <button className="btn btn--black" style={isInCheckout ? { width: '100%', height: '100%', } : {}}>APPLY COUPON</button>
             </div>
           
             <div className="col-row total__wrapper">
-              <div className="w-50">
+              <div className={!isInCheckout ? "w-50" : "w-100"}>
                 <div className="total__wrapper">
                   <h2>Cart totals</h2>
                   <div className="totals">
@@ -160,14 +63,15 @@ const Cart = () => {
                       <strong className="caption">Total</strong>
                       <strong className="value">&euro; { ((total * .21) + total).toFixed(2) }</strong>
                     </div>
+                    { !isInCheckout && 
                     <Link href={isAuthenticated ? "/checkout" : "/login"}>
-                      <a className="btn btn--black">PROCEED TO CHECKOUT</a>
-                    </Link>
+                      <a className="btn btn--black" style={!isInCheckout ? { marginTop: '1rem', display: 'block', } : {}}>PROCEED TO CHECKOUT</a>
+                    </Link> }
                   </div>
                 </div>
               </div>
             </div>
-          </>}
+          </div>}
 
 
         </div>

@@ -30,7 +30,7 @@ const GET_PRODUCT_DETAIL = gql`
 `;
 
 const ProductDetail = () => {
-  const addToCart = useStore(state => state.addItem);
+  const { addItem } = useStore();
 
   const router = useRouter();
   const { id } = router.query; 
@@ -41,14 +41,8 @@ const ProductDetail = () => {
   if (error) return "Error Loading Dishes";
   if (loading) return <h1>Loading ...</h1>;
 
-
-  // useEffect(() => {
-  //   carousel();
-  // },);
-
   if (data.product) {
     const { product } = data;
-    console.log("product", product);
     
     return (
       <Styles>
@@ -78,8 +72,8 @@ const ProductDetail = () => {
               <div className="price__heading">
                 <strong className="caption">Best Price</strong>
                 <button className="btn btn--purchase" onClick={() => {
-                  addToCart(product);
-                  router.push("/cart");
+                  addItem(product);
+                  //router.push("/cart");
                 }}>Purchase</button>
               </div>
             </div>

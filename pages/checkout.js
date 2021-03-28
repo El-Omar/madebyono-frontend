@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Row, Col } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import InjectedCheckoutForm from "../components/checkout/CheckoutForm";
@@ -20,17 +20,19 @@ function Checkout() {
   const stripePromise = loadStripe(STRIPE_PK);
 
   return (
-    <Row>
-      <Col style={{ paddingRight: 0 }} sm={{ size: 3, order: 1, offset: 2 }}>
-        <h1 style={{ margin: 20 }}>Checkout</h1>
-        <Cart isAuthenticated={isAuthenticated} />
-      </Col>
-      <Col style={{ paddingLeft: 5 }} sm={{ size: 6, order: 2 }}>
-        <Elements stripe={stripePromise}>
-          <InjectedCheckoutForm />
-        </Elements>
-      </Col>
-    </Row>
+    <Container>
+      <Row>
+        <Col md={{ size: 6, order: 1 }}>
+          <h1 style={{ margin: 20 }}>Checkout</h1>
+          <Cart isInCheckout={true} isAuthenticated={isAuthenticated} />
+        </Col>
+        <Col style={{ paddingLeft: 5 }} md={{ size: 6, order: 2 }}>
+          <Elements stripe={stripePromise}>
+            <InjectedCheckoutForm />
+          </Elements>
+        </Col>
+      </Row>
+    </Container>
   );
   // }
 }
