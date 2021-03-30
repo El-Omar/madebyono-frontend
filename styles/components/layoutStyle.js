@@ -13,9 +13,9 @@ export const Container = styled.section`
     width: 100%;
     height: 80px;
     position: relative;
-    padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-top: 25px; */
+    /* padding-left: 20px;
+    padding-right: 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;

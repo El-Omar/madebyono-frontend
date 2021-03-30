@@ -73,7 +73,6 @@ const Cart = ({ isInCheckout }) => {
             </div>
           </div>}
 
-
         </div>
       </div>
     </Styles>

@@ -35,7 +35,7 @@ const Header = ({ setBodyOverlay }) => {
   }, [isHeaderOpen, $pageNav]);
   
     return (
-      <>
+      <div className="container">
         <header className="page__header">
           <h1 className="page__title pointer"> 
             <Link href="/">
@@ -55,82 +55,44 @@ const Header = ({ setBodyOverlay }) => {
               <div className="nav-y"></div>
             </div>
             <Link href="/cart"><a className="cart__btn"></a></Link>
-            {/* <strong>
-            {user ? (
-              <strong className="user">{user.username}, </strong>
-            ) : (
-              null
-            )}
-              {user ? (
-                <Link href="/">
-                  <a
-                    className=""
-                    onClick={() => {
-                      logout();
-                      setUser(null);
-                    }}
-                  >
-                    Logout
-                  </a>
-                </Link>
-              ) : (
-                <Link href="/login">
-                  <a className="login">Sign in</a>
-                </Link>
-              )}
-            </strong> */}
           </div>
-          {/* <strong className="ml-auto">
-            {user ? (
-              <h5>{user.username}</h5>
-            ) : (
-              <Link href="/register">
-                <a className="nav-link"> Sign up</a>
-              </Link>
-            )}
-          </strong> */}
         
         </header>
 
         <nav className="page__nav" ref={el => $pageNav.current = el}>
           <ul className="pages page__nav__list">
-            <li className="page__link page__link-projects">
-              <Link href="/projects" className="link-wrap">
-                <a>
-                  {/* <span className="link-title">Passion</span> Projects */}
-                  Projects
+            <li className="navigation__link page__link-projects">
+              <Link href="/projects">
+                <a className="link-wrap">
+                  <span className="link-title">Stunning</span> <span className="page-name">Projects</span>
                 </a>
               </Link>
             </li>
-            <li className="page__link page__link-we-are">
-              <Link href="/studio" className="link-wrap">
-                <a>
-                  {/* <span className="link-title">Fresh</span> we-are */}
-                  Studio
+            <li className="navigation__link page__link-we-are">
+              <Link href="/studio">
+                <a className="link-wrap">
+                  <span className="link-title">Creative</span> <span className="page-name">Studio</span>
                 </a>
               </Link>
             </li>
-            <li className="page__link page__link-shop">
-              <Link href="/shop" className="link-wrap">
-                <a>
-                  {/* <span className="link-title">Hello</span> shop */}
-                  Shop
+            <li className="navigation__link page__link-shop">
+              <Link href="/shop">
+                <a className="link-wrap">
+                  <span className="link-title">Handy</span> <span className="page-name">Shop</span>
                 </a>
               </Link>
             </li>
-            <li className="page__link page__link-blog">
-              <Link href="/blog" className="link-wrap">
-                <a>
-                  {/* <span className="link-title">Hello</span> blog */}
-                  Blog
+            <li className="navigation__link page__link-blog">
+              <Link href="/blog">
+                <a className="link-wrap">
+                  <span className="link-title">Design</span> <span className="page-name">Blog</span>
                 </a>
               </Link>
             </li>
-            <li className="page__link page__link-contact">
-              <Link href="/contact" className="link-wrap">
-                <a>
-                  {/* <span className="link-title">Hello</span> Contact */}
-                  Contact
+            <li className="navigation__link page__link-contact">
+              <Link href="/contact">
+                <a className="link-wrap">
+                  <span className="link-title">Friendly</span> <span className="page-name">Contact</span>
                 </a>
               </Link>
             </li>
@@ -171,7 +133,7 @@ const Header = ({ setBodyOverlay }) => {
             </li>
           </ul>
         </nav>
-      </>
+      </div>
     );
 }
 
