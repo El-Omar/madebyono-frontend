@@ -100,12 +100,6 @@ body {
   visibility: visible;
 }
 
-.info-label {
-  font-size: 20px;
-  font-family: Montserrat;
-  margin: 8px 2px;
-}
-
 .email-adress, .adress, .social-media__links {
   font-size: 16px;
   font-family: Montserrat;
@@ -245,21 +239,7 @@ body {
   color: #000;
 }
 
-.frame, .frame-next {
-  /* height: 100%;
-  width: auto;
-  margin-top: 15px;
-  position: absolute; */
-  /* opacity: 0; */
-  /* transition: all .56s cubic-bezier(.59, .01, .28, 1) 2000ms; */
-}
-
-/* .frame.animated, .frame-next.animated {
-  opacity: 1;
-} */
-
 .frame {
-  /* mix-blend-mode: hard-light; */
   animation-duration: .15s;
   animation-iteration-count: infinite;
 }
@@ -305,7 +285,6 @@ body {
   bottom: 40%;
   width: 80%;
 }
-
 
 .color-rectangle.blue {
   background: #3f90de;

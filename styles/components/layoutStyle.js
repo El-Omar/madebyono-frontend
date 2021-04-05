@@ -13,9 +13,6 @@ export const Container = styled.section`
     width: 100%;
     height: 80px;
     position: relative;
-    /* padding-top: 25px; */
-    /* padding-left: 20px;
-    padding-right: 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,19 +20,18 @@ export const Container = styled.section`
   }
 
   .page__nav {
-    display: flex;
-    justify-content: space-around;
     width: 100%;
-    background: white;
-    z-index: 200;
+    padding-top: 80px;
     position: absolute;
     top: 0;
     left: 0;
-    padding: 80px 20px 40px;
+    opacity: 0;
+    z-index: 200;
+    overflow: hidden;
+    background: white;
     transition: all .65s cubic-bezier(.59,.01,.28,1);
     transform: translateY(-100%);
     transform-origin: top center;
-    opacity: 0;
 
     &.active {
       transform: translateY(0);
@@ -47,6 +43,83 @@ export const Container = styled.section`
     display: flex;
     flex-flow: column;
     align-items: center;
+  }
+
+  .page__nav__list {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+  }
+
+
+  .navigation__link {
+    font-size: 26px;
+    font-family: Montserrat;
+    margin: 10px 0;
+    overflow: hidden;
+    
+    a {
+      text-decoration: none;
+    }
+
+    span {
+      transition: all 480ms ease-in-out;    
+    }
+    
+    .link-title {
+      display: inline-block;
+      width: 130px;
+      margin-right: 2px;
+      text-align: right;
+      transform: translateX(-130px);
+
+      &:nth-child(1) {
+        color: #d63187;
+      }
+
+      &:nth-child(2) {
+        color: #3f90de;
+      }
+
+      &:nth-child(3) {
+        color: #f7eb0b;
+      }
+
+      &:nth-child(4) {
+        color: #3f90de;
+      }
+
+      &:nth-child(5) {
+        color: #d63187;
+      }
+    }
+    
+    .page-name {
+      transform: translateX(-130px);
+      display: inline-block;
+    }
+
+    .link-wrap {
+      display: inline-block;
+      width: 100%;
+      
+      &:hover {
+
+        .page-name, .link-title {
+          transform: translateX(0);
+        }
+
+        .page-name {
+          color: #222;
+        }
+      }
+    }
+  }
+
+  .info-label {
+    font-size: 20px;
+    font-family: Montserrat;
+    margin: 10px;
   }
 
   .cart__btn {

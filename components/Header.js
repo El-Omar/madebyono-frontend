@@ -3,15 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Router from 'next/router';
 
-import AppContext from "../context/AppContext";
-import { logout } from "../lib/auth";
-
 const Header = ({ setBodyOverlay }) => {
   const $navBtn = useRef(null);
   const $pageNav = useRef(null);
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
-
-  const { user, setUser } = useContext(AppContext);
 
   const onBtnClick = () => {
     setIsHeaderOpen(open => open = !open);
@@ -56,82 +51,95 @@ const Header = ({ setBodyOverlay }) => {
             </div>
             <Link href="/cart"><a className="cart__btn"></a></Link>
           </div>
-        
         </header>
 
         <nav className="page__nav" ref={el => $pageNav.current = el}>
-          <ul className="pages page__nav__list">
-            <li className="navigation__link page__link-projects">
-              <Link href="/projects">
-                <a className="link-wrap">
-                  <span className="link-title">Stunning</span> <span className="page-name">Projects</span>
-                </a>
-              </Link>
-            </li>
-            <li className="navigation__link page__link-we-are">
-              <Link href="/studio">
-                <a className="link-wrap">
-                  <span className="link-title">Creative</span> <span className="page-name">Studio</span>
-                </a>
-              </Link>
-            </li>
-            <li className="navigation__link page__link-shop">
-              <Link href="/shop">
-                <a className="link-wrap">
-                  <span className="link-title">Handy</span> <span className="page-name">Shop</span>
-                </a>
-              </Link>
-            </li>
-            <li className="navigation__link page__link-blog">
-              <Link href="/blog">
-                <a className="link-wrap">
-                  <span className="link-title">Design</span> <span className="page-name">Blog</span>
-                </a>
-              </Link>
-            </li>
-            <li className="navigation__link page__link-contact">
-              <Link href="/contact">
-                <a className="link-wrap">
-                  <span className="link-title">Friendly</span> <span className="page-name">Contact</span>
-                </a>
-              </Link>
-            </li>
-          </ul>
 
-          <ul className="emails page__nav__list">
-            <li className="info-label">
-              Join us <br />
-              <a href="mailto:yoshi@madebyono.com?subject=Career&cc=career@madebyono.com" className="email-adress">career@madebyono.com</a>
-            </li>
-            <li className="info-label">
-              Creative <br />
-              <a href="mailto:yoshi@madebyono.com?subject=Creative&cc=creative@madebyono.com" className="email-adress">creative@madebyono.com</a>
-            </li>
-            <li className="info-label">
-              Development <br />
-              <a href="mailto:yoshi@madebyono.com?subject=Development&cc=development@madebyono.com" className="email-adress">development@madebyono.com</a>
-            </li>
-          </ul>
+          <div className="container">
+            <div className="col-row">
+              <div className="w-33">
+                <ul className="pages page__nav__list">
+                  <li className="navigation__link page__link-projects">
+                    <Link href="/projects">
+                      <a className="link-wrap">
+                        <span className="link-title">Stunning</span> <span className="page-name">Projects</span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="navigation__link page__link-we-are">
+                    <Link href="/studio">
+                      <a className="link-wrap">
+                        <span className="link-title">Creative</span> <span className="page-name">Studio</span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="navigation__link page__link-shop">
+                    <Link href="/shop">
+                      <a className="link-wrap">
+                        <span className="link-title">Handy</span> <span className="page-name">Shop</span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="navigation__link page__link-blog">
+                    <Link href="/blog">
+                      <a className="link-wrap">
+                        <span className="link-title">Design</span> <span className="page-name">Blog</span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="navigation__link page__link-contact">
+                    <Link href="/contact">
+                      <a className="link-wrap">
+                        <span className="link-title">Friendly</span> <span className="page-name">Contact</span>
+                      </a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-          <ul className="contact-info page__nav__list">
-            <li className="info-label">
-              General <br />
-              <a href="mailto:yoshi@madebyono.com?subject=Info - Madebyono" className="email-adress">yoshi@madebyono.com</a>
-            </li>
+              <div className="w-33">
+                <ul className="emails page__nav__list">
+                  <li className="info-label">
+                    Join us <br />
+                    <a href="mailto:yoshi@madebyono.com?subject=Career&cc=career@madebyono.com" className="email-adress">career@madebyono.com</a>
+                  </li>
+                  <li className="info-label">
+                    Creative <br />
+                    <a href="mailto:yoshi@madebyono.com?subject=Creative&cc=creative@madebyono.com" className="email-adress">creative@madebyono.com</a>
+                  </li>
+                  <li className="info-label">
+                    Development <br />
+                    <a href="mailto:yoshi@madebyono.com?subject=Development&cc=development@madebyono.com" className="email-adress">development@madebyono.com</a>
+                  </li>
+                </ul>
+              </div>
 
-            <li className="adress info-label">
-              Brussels, Belgium <br />
-              <a href="tel:0032484624639">(+32) 484 62 46 39</a>
-            </li>
+              <div className="w-33">
+                <ul className="contact-info page__nav__list">
+                  <li className="info-label">
+                    General <br />
+                    <a href="mailto:yoshi@madebyono.com?subject=Info - Madebyono" className="email-adress">yoshi@madebyono.com</a>
+                  </li>
 
-            <li className="info-label social-media">
-              Social Media <br />
-              <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.linkedin.com/in/yoshideschrijver">In</a>
-              <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.instagram.com/madebyono">Ig</a>
-              <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.facebook.com/madebyono">Fb</a>
-              <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.behance.net/YoshiOno">Be</a>
-            </li>
-          </ul>
+                  <li className="adress info-label">
+                    Brussels, Belgium <br />
+                    <a href="tel:0032484624639">(+32) 484 62 46 39</a>
+                  </li>
+
+                  <li className="info-label social-media">
+                    Social Media <br />
+                    <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.linkedin.com/in/yoshideschrijver">In</a>
+                    <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.instagram.com/madebyono">Ig</a>
+                    <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.facebook.com/madebyono">Fb</a>
+                    <a className="social-media__links" rel="noreferer" target="_blank" href="https://www.behance.net/YoshiOno">Be</a>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+
+
         </nav>
       </div>
     );

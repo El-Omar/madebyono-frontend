@@ -27,28 +27,9 @@ const QUERY = gql`
 `;
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
   const { loading, error, data } = useQuery(QUERY);
+  const [filter, setFilter] = useState("");
   
-  useEffect(() => {
-    if (!loading && !error && data.projects) {
-      setProjects(projects => projects = data.projects);
-    }
-  }, [loading, error, data]);
-
-  const filterProjectsByCategory = category => {
-    if (!category || category === "") {
-      setProjects(projects => projects = data.projects);
-      return;
-    }
-
-    const newProjects = data.projects.filter(project => (
-      project.categories.length && project.categories.filter(c => c.category === category).length
-    ));
-
-    setProjects(projects => projects = newProjects);
-  };
-
   return (
     <Styles className="main__container">
       <div className="container">
@@ -59,14 +40,14 @@ const Projects = () => {
           </h1>
         </header>
 
-        <div className="projects__wrapper">
+        <div className={`projects__wrapper ${filter !== "" ? 'filter ' + filter : ''}`}>
           <div className="col-row">
             {error && <h2>Error loading projects</h2>}
             {loading && <h1>Loading</h1>}
             {!error && !loading && 
               <>
-                <Categories categories={data.categories} filter={filterProjectsByCategory} />
-                <ProjectList projects={projects} />
+                <Categories categories={data.categories} filter={setFilter} />
+                <ProjectList projects={data.projects} filter={filter} />
               </>
             }
           </div>
