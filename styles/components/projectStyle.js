@@ -41,6 +41,7 @@ export const Container = styled.div`
   }
 
   .add-to-cart {
+    padding: 4px 8px;
     background: white;
     border: 1px solid #999;
     font-size: 12px;
@@ -57,6 +58,7 @@ export const Container = styled.div`
     &:hover {
       background: ${Colors.blue};
       color: white;
+      border-color: ${Colors.blue};
 
       .price {
         color: white;

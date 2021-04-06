@@ -59,24 +59,30 @@ const ProductDetail = () => {
             <div className="thumbnail thumbnail--9by16">
               <img src={path(product.thumbnail.url)} />
             </div>
-            <div className="product__heading">
+
+            <div className="col-row row--prices">
               { product.oldprice && 
-                <div className="price__heading price__heading--oldprice">
-                  <strong className="caption">Regular Bundle Price</strong>
-                  <strong className="price price--old">&euro;{ product.oldprice.toFixed(2) }</strong>
-              </div> }
-              <div className="price__heading">
+              <div className="w-33 price-col">
+                  <div className="price__heading--oldprice">
+                    <strong className="caption">Regular Bundle Price</strong>
+                    <strong className="price price--old">&euro;{ product.oldprice.toFixed(2) }</strong>
+                </div> 
+              </div>
+              }
+
+              <div className="w-33 price-col">
                 <strong className="caption">Our deal price</strong>
                 <strong className="price">&euro;{ product.price.toFixed(2) }</strong>
               </div>
-              <div className="price__heading">
+
+              <div className="w-33">
                 <strong className="caption">Best Price</strong>
                 <button className="btn btn--purchase" onClick={() => {
                   addItem(product);
-                  //router.push("/cart");
                 }}>Purchase</button>
               </div>
             </div>
+
             <div className="col-row">
               <div className="w-50">
                 <p className="description">
@@ -91,8 +97,7 @@ const ProductDetail = () => {
             { product.images[0] && <div className="thumbnail thumbnail--9by16">
               <img src={path(product.images[0].url)} />
             </div> }
-            
-
+          
 
             {/* <div className="slider__wrap">
               { product.images.map((img, i) => (

@@ -18,7 +18,6 @@ export const Container = styled.div`
     }
 
     &--collabs {
-      /* opacity: 0; */
       transition: all .68s cubic-bezier(.59, .01, .28, 1);
 
       &.animated {
@@ -27,7 +26,6 @@ export const Container = styled.div`
     }
 
     &--projects {
-      /* opacity: 0; */
       transition: all .68s cubic-bezier(.59, .01, .28, 1);
 
       &.animated {
@@ -98,9 +96,8 @@ export const Container = styled.div`
       line-height: 42px;
       transition: all .58s cubic-bezier(.59, .01, .28, 1);
       transition-delay: 300ms;
-      /* opacity: 0; */
-      /* transform: translateY(200%); */
-
+      background: rgba(255, 255, 255, .6);
+      
       &.animated {
         opacity: 1;
         transform: translateY(0);
@@ -108,13 +105,12 @@ export const Container = styled.div`
     }
     
     & .project__year {
-      font-family: Lato;
-      font-size: 22px;
+      display: inline-block;
+      background: rgba(255, 255, 255, .6);
       transition: all .58s cubic-bezier(.59, .01, .28, 1);
       transition-delay: 200ms;
-      /* opacity: 0; */
-      display: inline-block;
-      /* transform: translateY(400%); */
+      font-family: Lato;
+      font-size: 34px;
 
       &.animated {
         opacity: 1;

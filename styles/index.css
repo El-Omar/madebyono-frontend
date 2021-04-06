@@ -391,11 +391,16 @@ body {
 
 @media all and (max-width: 880px) {
 
-  .info-label {
-    font-size: 16px;
+  .w-33 .page__nav__list .info-label {
+    font-size: 12px;
+    margin: 5px 0;
+    font-weight: bold;
+    color: #b7b7b7;
   }
 
   .info-label a {
+    font-weight: normal;
+    color: #222;
     font-size: 14px;
   }
 }
@@ -411,7 +416,17 @@ body {
     justify-content: center;
   }
 
-  .link-wrap {
+  .emails__wrapper.w-33 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .pages.page__nav__list .navigation__link {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+
+  .link-wrap, .page-name {
     transform: none !important;
   }
 
@@ -425,11 +440,6 @@ body {
 
   .welcome__header {
     margin-top: 12vh;
-  }
-
-  .goldenratio {
-    transform: rotate(90deg) scaleX(-2.175581395348837) scaleY(-2.575581395348837);
-    margin-top: 200px;
   }
 
   .frame__wrap {

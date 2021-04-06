@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Svgs } from '../variables';
+import { Svgs, Colors } from '../variables';
 
 export const Container = styled.section`
   position: relative;
@@ -68,34 +68,59 @@ export const Container = styled.section`
     
     .link-title {
       display: inline-block;
-      width: 130px;
       margin-right: 2px;
       text-align: right;
-      transform: translateX(-130px);
-
-      &:nth-child(1) {
-        color: #d63187;
+    }
+    
+    &.page__link-projects {
+  
+      .link-title, .page-name {
+        transform: translateX(-123px);
+        width: 123px;
       }
+    }
 
-      &:nth-child(2) {
-        color: #3f90de;
-      }
+    &.page__link-we-are {
 
-      &:nth-child(3) {
-        color: #f7eb0b;
-      }
-
-      &:nth-child(4) {
-        color: #3f90de;
-      }
-
-      &:nth-child(5) {
-        color: #d63187;
+      .link-title, .page-name {
+        transform: translateX(-109px);
+        width: 109px;
       }
     }
     
+    &.page__link-shop {
+
+      .link-title, .page-name {
+        transform: translateX(-87px);
+        width: 87px;
+      }
+    }
+    
+    &.page__link-blog {
+
+      .link-title, .page-name {
+        transform: translateX(-94px);
+        width: 94px;
+      }
+    }
+    
+    &.page__link-blog {
+
+      .link-title, .page-name {
+        transform: translateX(-108px);
+        width: 108px;
+      }
+    }
+    
+    &.page__link-contact {
+
+      .link-title, .page-name {
+        transform: translateX(-108px);
+        width: 108px;
+      }
+    }
+
     .page-name {
-      transform: translateX(-130px);
       display: inline-block;
     }
 
@@ -105,8 +130,11 @@ export const Container = styled.section`
       
       &:hover {
 
-        .page-name, .link-title {
-          transform: translateX(0);
+        @media all and (min-width: 768px) {
+
+          .page-name, .link-title {
+            transform: translateX(0);
+          }
         }
 
         .page-name {
@@ -165,4 +193,12 @@ export const Container = styled.section`
     }
   }
 
+  // -- COLORS
+  .color {
+    &--rose { color: ${Colors.rose}; }
+    &--blue { color: ${Colors.blue}; }
+    &--purple { color: ${Colors.purple}; }
+    &--yellow { color: ${Colors.yellow}; }
+    &--gray { color: ${Colors.gray}; }
+  }
 `;

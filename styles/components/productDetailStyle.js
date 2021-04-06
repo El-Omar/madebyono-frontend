@@ -29,6 +29,20 @@ export const Styles = styled.div`
     color: ${Colors.gray};
   }
 
+  .row--prices {
+    text-align: center;
+
+    @media all and (max-width: 768px) {
+      
+      .price-col {
+        width: 50% !important;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+      }
+    }
+  }
+
   .product__heading {
     display: flex;
     width: 100%;
@@ -39,26 +53,24 @@ export const Styles = styled.div`
     }
   }
 
-  .price__heading {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    margin: 3rem;
-    
-    @media all and (max-width: 600px) {
-      margin: 1rem;
-    }
-  }
-
   .caption {
     font-weight: bold;
     display: block;
     margin-bottom: 12px;
+    
+    @media all and (max-width: 600px) {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
   }
   
   .price {
     font-size: 32px;
     font-weight: bold;
+
+    @media all and (max-width: 600px) {
+      font-size: 26px;
+    }
 
     &--old {
       position: relative;

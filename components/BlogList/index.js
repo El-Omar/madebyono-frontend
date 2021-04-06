@@ -42,7 +42,6 @@ const BlogList = props => {
           <header className="title">
             <h1>
               <span className="title--collabs">Blogs</span>
-              {/* <span className="title--projects"> &amp;<br />Projects</span> */}
             </h1>
           </header>
           {

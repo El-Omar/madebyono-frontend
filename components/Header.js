@@ -62,42 +62,42 @@ const Header = ({ setBodyOverlay }) => {
                   <li className="navigation__link page__link-projects">
                     <Link href="/projects">
                       <a className="link-wrap">
-                        <span className="link-title">Stunning</span> <span className="page-name">Projects</span>
+                        <span className="link-title color--blue">Stunning</span> <span className="page-name">Projects</span>
                       </a>
                     </Link>
                   </li>
                   <li className="navigation__link page__link-we-are">
                     <Link href="/studio">
                       <a className="link-wrap">
-                        <span className="link-title">Creative</span> <span className="page-name">Studio</span>
+                        <span className="link-title color--rose">Creative</span> <span className="page-name">Studio</span>
                       </a>
                     </Link>
                   </li>
                   <li className="navigation__link page__link-shop">
                     <Link href="/shop">
                       <a className="link-wrap">
-                        <span className="link-title">Handy</span> <span className="page-name">Shop</span>
+                        <span className="link-title color--yellow">Handy</span> <span className="page-name">Shop</span>
                       </a>
                     </Link>
                   </li>
                   <li className="navigation__link page__link-blog">
                     <Link href="/blog">
                       <a className="link-wrap">
-                        <span className="link-title">Design</span> <span className="page-name">Blog</span>
+                        <span className="link-title color--purple">Design</span> <span className="page-name">Blog</span>
                       </a>
                     </Link>
                   </li>
                   <li className="navigation__link page__link-contact">
                     <Link href="/contact">
                       <a className="link-wrap">
-                        <span className="link-title">Friendly</span> <span className="page-name">Contact</span>
+                        <span className="link-title color--gray">Friendly</span> <span className="page-name">Contact</span>
                       </a>
                     </Link>
                   </li>
                 </ul>
               </div>
 
-              <div className="w-33">
+              <div className="w-33 emails__wrapper">
                 <ul className="emails page__nav__list">
                   <li className="info-label">
                     Join us <br />
@@ -114,7 +114,7 @@ const Header = ({ setBodyOverlay }) => {
                 </ul>
               </div>
 
-              <div className="w-33">
+              <div className="w-33 emails__wrapper">
                 <ul className="contact-info page__nav__list">
                   <li className="info-label">
                     General <br />
