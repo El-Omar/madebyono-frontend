@@ -35,7 +35,7 @@ const Header = ({ setBodyOverlay }) => {
           <h1 className="page__title pointer"> 
             <Link href="/">
               <a>
-                <Image className="logo" src="/assets/img/logo.png" alt="Logo" width="50" height="50" />
+                <img className="logo" src="/assets/img/logo.png" alt="Logo" />
               </a>
             </Link>
           </h1> 
