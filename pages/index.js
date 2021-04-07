@@ -11,7 +11,6 @@ const Home = () => {
   const $frames = useRef({});
   const $tempFrame = useRef(null);
 
-
   useEffect(() => {
     $title.current.classList.add(`element-shown`);
     $subtitle.current.classList.add(`element-shown`);
@@ -43,10 +42,10 @@ const Home = () => {
       $frame.style.animationName = `glitch`;
       
       setTimeout(() => {
-        $tempFrame.current.classList.add(`invisible`);
+        $tempFrame.current?.classList.add(`invisible`);
         $frame.style.animationName = ``;
         $frame.classList.remove(`negative`);
-      }, 200)
+      }, 200);
     }
   }
 

@@ -10,7 +10,7 @@ export const Container = styled.div`
     align-items: center;
 
     &__title {
-      color: ${Colors.yellow};
+      color: ${Colors.blue};
       font-size: 18px;
       font-family: Montserrat;
       font-weight: 600;

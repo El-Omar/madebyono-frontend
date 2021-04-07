@@ -15,7 +15,7 @@ const Categories = ({ categories, filter }) => {
         <button className={`btn--category${selectedCategory === category ? " active" : ""}`} 
           key={i} onClick={() => {
           setSelectedCategory(selectedCategory === category ? "" : category)
-          filter(selectedCategory === category ? "" : category.toLowerCase())
+          filter(selectedCategory === category ? "" : category.toLowerCase().replace(' ', '-'))
         }}>{category}</button>
       )}
     </div>

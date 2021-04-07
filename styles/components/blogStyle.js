@@ -1,37 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-top: 160px;
   min-height: 100vh;
   display: flex;
   flex-flow: column;
   background: white;
 
   .title {
-    margin-bottom: -15vh;
     font-family: Lato;
     font-size: 55px;
     line-height: 68px;
-
-    & h1 {
-      margin-left: 7vw;
-    }
-
-    &--collabs {
-      transition: all .68s cubic-bezier(.59, .01, .28, 1);
-
-      &.animated {
-        opacity: 1;
-      }
-    }
-
-    &--projects {
-      transition: all .68s cubic-bezier(.59, .01, .28, 1);
-
-      &.animated {
-        opacity: 1;
-      }
-    }
   }
 
   .project__wrap {
@@ -95,27 +73,19 @@ export const Container = styled.div`
       font-size: 34px;
       line-height: 42px;
       transition: all .58s cubic-bezier(.59, .01, .28, 1);
-      transition-delay: 300ms;
       background: rgba(255, 255, 255, .6);
-      
-      &.animated {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      opacity: 0;
+      transform: translateY(50px);
     }
     
     & .project__year {
       display: inline-block;
       background: rgba(255, 255, 255, .6);
       transition: all .58s cubic-bezier(.59, .01, .28, 1);
-      transition-delay: 200ms;
       font-family: Lato;
       font-size: 34px;
-
-      &.animated {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      opacity: 0;
+      transform: translateY(50px);
     }
 
     /*  right project */

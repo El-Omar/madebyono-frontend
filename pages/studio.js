@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { Container } from '../styles/components/studioStyle';
-import animation from "../lib/studio";
 import Link from "next/link";
 
 import { gsap } from "gsap/dist/gsap";

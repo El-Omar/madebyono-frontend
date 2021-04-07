@@ -1,8 +1,11 @@
+import { useEffect, useRef } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-
 import Link from "next/link";
-import Image from "next/image";
+
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 import getDate from "../../lib/getDate";
 import path from "../../lib/path";
@@ -26,27 +29,53 @@ const QUERY = gql`
 
 const BlogList = props => {
   const { loading, error, data } = useQuery(QUERY);
+  const $articles = useRef([]);
+ 
+  useEffect(() => {
+    $articles.current.forEach($article => {
+      const $title = $article.querySelector('.project__title');
+      const $year = $article.querySelector('.project__year');
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: $article,
+          start: "top 80%",
+        }
+      })
+      .to($title, {
+        autoAlpha: 1, 
+        translateY: 0,
+      }).to($year, {
+        autoAlpha: 1, 
+        translateY: 0,
+        delay: -.1
+      });
+      
+    });
+  });
 
   if (error) return "Error loading blog articles";
   if (loading) return <h2>Loading...</h2>;
+
 
   if (data.blogs && data.blogs.length) {
     const searchQuery = [...data.blogs.filter((blog) => 
       blog.title.toLowerCase().includes(props.search.trim())
     )];
 
-
     if (searchQuery.length !== 0) {
       return (
         <Container className="main__container">
-          <header className="title">
-            <h1>
-              <span className="title--collabs">Blogs</span>
-            </h1>
-          </header>
+          <div className="container">
+            <header className="title">
+              <h1>
+                <span className="title--collabs">Blogs</span>
+              </h1>
+            </header>
+          </div>
           {
-            searchQuery.map(blog => (
-              <div className="project__wrap" key={ blog.id }>
+            searchQuery.map((blog, i) => (
+              <div className="project__wrap" key={ blog.id } ref={el => $articles.current[i] = el}>
                 <Link href={`/blog/${blog.id}/`}>
                   <a className="cover--link"></a>
                 </Link>

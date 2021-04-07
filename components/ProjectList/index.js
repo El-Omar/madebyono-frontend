@@ -6,7 +6,7 @@ const ProjestList = ({ projects, filter }) => {
   if (projects && projects.length) {
     return projects.map(project => {
       let _className = ``;
-      project.categories.map(({ category }) => _className += category.toLowerCase() + ' ');
+      project.categories.map(({ category }) => _className += category.toLowerCase().replace(' ', '-') + ' ');
       _className.replace(/ /g, '').replace(/,/g, '');
 
       return (
