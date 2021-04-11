@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
+import Head from "next/head";
+import Link from "next/link";
+
 import { useRouter } from "next/router";
 import {
   Container,
@@ -12,7 +15,6 @@ import {
 } from "reactstrap";
 import { login } from "../lib/auth";
 import AppContext from "../context/AppContext";
-import Link from "next/link";
 
 function Login(props) {
   const [data, updateData] = useState({ identifier: "", password: "" });
@@ -33,6 +35,9 @@ function Login(props) {
 
   return (
     <Container>
+      <Head>
+        <title>Login - Madebyono</title>
+      </Head>
       <Row>
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">

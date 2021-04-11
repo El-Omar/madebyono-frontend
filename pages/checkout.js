@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useContext } from "react";
 
 import { Row, Col, Container } from "reactstrap";
@@ -21,6 +22,9 @@ function Checkout() {
 
   return (
     <Container>
+      <Head>
+        <title>Checkout - Madebyono</title>
+      </Head>
       <Row>
         <Col md={{ size: 6, order: 1 }}>
           <h1 style={{ margin: 20 }}>Checkout</h1>

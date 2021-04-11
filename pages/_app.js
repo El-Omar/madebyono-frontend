@@ -131,6 +131,7 @@ const MyApp = ({ Component, pageProps }) => {
       }}>
       <Head>
         <meta name="dev:creator" content="Elomar" />
+        <link rel="shortcut icon" href="/assets/img/favicon.png" />
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

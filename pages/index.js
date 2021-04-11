@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import frames from "../components/frames";
 import Image from 'next/image';
+import Head from "next/head";
 
 const Home = () => {
   const $title = useRef(null);
@@ -50,7 +51,11 @@ const Home = () => {
   }
 
   return (
+
     <div className="home__container">
+      <Head>
+        <title>Home - Madebyono</title>
+      </Head>
         <div className="hotspot__wrapper on-top">
           {
             new Array(5).fill("row").map((_, i) => (

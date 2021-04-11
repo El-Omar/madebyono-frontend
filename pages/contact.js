@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import Head from "next/head";
 import { Container } from "../styles/components/contactStyle";
 import animation from "../lib/contact";
 
@@ -10,6 +11,9 @@ const Contact = () => {
 
   return (
     <Container className="main__container">
+      <Head>
+        <title>Contact - Madebyono</title>
+      </Head>
       <div className="contact-intro spacing rellax" data-rellax-speed="-1">
         <strong className="contact__subtitle">
           <strong className="color--purple">A Digital Agency</strong> - Hello

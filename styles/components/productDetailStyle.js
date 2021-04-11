@@ -31,6 +31,7 @@ export const Styles = styled.div`
 
   .row--prices {
     text-align: center;
+    justify-content: center;
 
     @media all and (max-width: 768px) {
       

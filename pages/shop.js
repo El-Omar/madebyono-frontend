@@ -1,9 +1,15 @@
 import ProductList from "../components/ProductList";
+import Head from "next/head";
 
 const Shop = () => {
 
   return (
-    <ProductList />
+    <>
+      <Head>
+        <title>Shop - Madebyono</title>
+      </Head>
+      <ProductList />
+    </>
   );
 
 };

@@ -30,7 +30,7 @@ const Header = ({ setBodyOverlay }) => {
   }, [isHeaderOpen, $pageNav]);
   
     return (
-      <div className="container">
+      <div className="container container--header">
         <header className="page__header">
           <h1 className="page__title pointer"> 
             <Link href="/">

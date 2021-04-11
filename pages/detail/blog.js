@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
+import Head from "next/head";
+import marked from "marked";
 
 import { Styles } from "../../styles/components/productDetailStyle";
 import path from "../../lib/path";
@@ -37,6 +39,9 @@ const BlogDetail = () => {
     
     return (
       <Styles>
+        <Head>
+          <title>{blog.title} - Madebyono</title>
+        </Head>
         <div className="main__container">
           <div className="container">
             <h1 className="page__heading text-center">{blog.title}</h1>
@@ -52,9 +57,9 @@ const BlogDetail = () => {
             </div>
             <div className="col-row">
               <div className="w-100">
-                <p className="description">
-                  { blog.text }
-                </p>
+                <div className="description">
+                  <div className="marked" dangerouslySetInnerHTML={{ __html: marked(blog.text) }}></div>
+                </div>
               </div>
             </div>
           </div>

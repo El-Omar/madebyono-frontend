@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import Head from "next/head";
+import Link from "next/link";
 
 import {
   Container,
@@ -12,7 +14,6 @@ import {
 } from "reactstrap";
 import { registerUser } from "../lib/auth";
 import AppContext from "../context/AppContext";
-import Link from "next/link";
 
 const Register = () => {
   const [data, setData] = useState({ email: "", username: "", password: "" });
@@ -22,6 +23,9 @@ const Register = () => {
   
   return (
     <Container>
+      <Head>
+        <title>Register - Madebyono</title>
+      </Head>
       <Row>
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">

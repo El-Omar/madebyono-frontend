@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { Container as Styles } from "../styles/components/projectStyle";
+import Head from "next/head";
 
 import ProjectList from "../components/ProjectList";
 import Categories from "../components/ProjectList/categories";
@@ -32,6 +33,9 @@ const Projects = () => {
   
   return (
     <Styles className="main__container">
+      <Head>
+        <title>Projects - Madebyono</title>
+      </Head>
       <div className="container">
         <header className="page__heading">
           <h1>

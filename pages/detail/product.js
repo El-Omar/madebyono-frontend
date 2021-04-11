@@ -2,11 +2,10 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
-import { useEffect } from 'react';
+import Head from "next/head";
+import marked from "marked";
 
 import { Styles } from "../../styles/components/productDetailStyle";
-import carousel from '../../lib/carousel';
-
 import path from "../../lib/path";
 
 import { useStore } from "../../store/cartStore";
@@ -46,6 +45,9 @@ const ProductDetail = () => {
     
     return (
       <Styles>
+        <Head>
+          <title>{product.name} - Madebyono</title>
+        </Head>
         <div className="main__container">
           <div className="container">
             <h1 className="page__heading text-center">{product.name}</h1>
@@ -84,36 +86,21 @@ const ProductDetail = () => {
             </div>
 
             <div className="col-row">
-              <div className="w-50">
-                <p className="description">
-                  { product.description }
-                </p>
+              <div className="w-100">
+                <div className="description">
+                  <div className="marked" dangerouslySetInnerHTML={{ __html: marked(product.description) }}></div>
+                </div>
               </div>
-              <div className="w-50">
+              <div className="w-100">
                 <i className="icon icon--arrow icon--arrow--down"></i>
               </div>
             </div>
 
-            { product.images[0] && <div className="thumbnail thumbnail--9by16">
-              <img src={path(product.images[0].url)} />
-            </div> }
-          
-
-            {/* <div className="slider__wrap">
-              { product.images.map((img, i) => (
-                <div key={i} className={`slide`} data-id={i + 2}>
-                  <div className="slide__img" style={{ backgroundImage: "url(" + process.env.NEXT_PUBLIC_API_URL + img.url + ")" }}></div>
-                </div>
-              )) }
-
-              <div className="slider__controllers">
-                <strong data-action="prev" className="slider__btn slider__controllers__next"></strong>
-                <strong data-action="next" className="slider__btn slider__controllers__previous"></strong>
+            { product.images.map((image, i) => (
+              <div className="thumbnail thumbnail--9by16" key={i}>
+                <img src={path(image.url)} />
               </div>
-
-              <div className="slider__dots"></div>
-            </div> */}
-
+            )) }
 
           </div>
         </div>

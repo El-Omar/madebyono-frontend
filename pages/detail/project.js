@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
+import Head from "next/head";
+import marked from "marked";
 
 import { Styles } from '../../styles/components/projectDetailsStyle';
 import carousel from '../../lib/carousel';
@@ -54,6 +56,9 @@ const ProjectDetail = () => {
   if (project) {
     return (
      <Styles>
+       <Head>
+          <title>{project.title } - Madebyono</title>
+        </Head>
         <article className="project__images">
           <div className="slider__wrap">
           <div className={`slide slide-active`} data-id="1">
@@ -85,9 +90,13 @@ const ProjectDetail = () => {
             </strong>
           </header>
 
-          <p className="project__content-desc">
+          {/* <p className="project__content-desc">
             { project.text }
-          </p>
+          </p> */}
+
+          <div className="description">
+            <div className="marked" dangerouslySetInnerHTML={{ __html: marked(project.text) }}></div>
+          </div>
           <a href={ project.button } 
             target="_blank" rel="noopener noreferrer"
             className="project__content-link">More</a>
