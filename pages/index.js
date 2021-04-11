@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import frames from "../components/frames";
+import traits from "../components/traits";
 import Image from 'next/image';
 import Head from "next/head";
 
@@ -11,6 +12,7 @@ const Home = () => {
   const $hotspots = useRef([]);
   const $frames = useRef({});
   const $tempFrame = useRef(null);
+  const $trait = useRef(null);
 
   useEffect(() => {
     $title.current.classList.add(`element-shown`);
@@ -32,6 +34,8 @@ const Home = () => {
     Object.getOwnPropertyNames($frames.current).forEach(key => {
       $frames.current[key].classList.add(`invisible`)
     });
+
+    $trait.current.innerHTML = traits().get(+id);
 
     const $frame = $frames.current[+id];
 
@@ -99,7 +103,7 @@ const Home = () => {
             <header className="welcome__header">
               <h1 className="welcome__title" ref={el => $title.current = el}>Hi I'm Yoshi Ono</h1>
               <strong className="welcome__subtitle" ref={el => $subtitle.current = el}>
-                <strong className="trait">Freelance Creative</strong>
+                <strong className="trait" ref={$trait}>Freelance Creative</strong>
               </strong>
             </header>
 
