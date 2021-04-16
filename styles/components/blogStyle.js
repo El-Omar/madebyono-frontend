@@ -47,8 +47,10 @@ export const Container = styled.div`
       }
 
       & img {
-        width: 150%;
-        height: auto;
+        width: 100%;
+        height: 120%;
+        max-height: none;
+        object-fit: cover;
       }
     }
 

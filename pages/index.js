@@ -3,6 +3,7 @@ import frames from "../components/frames";
 import traits from "../components/traits";
 import Image from 'next/image';
 import Head from "next/head";
+import getRandomArbitrary from "../lib/getRandomArbitrary";
 
 const Home = () => {
   const $title = useRef(null);
@@ -13,14 +14,17 @@ const Home = () => {
   const $frames = useRef({});
   const $tempFrame = useRef(null);
   const $trait = useRef(null);
+  const $rectangles = useRef([]);
 
   useEffect(() => {
+    // Initial animation
     $title.current.classList.add(`element-shown`);
     $subtitle.current.classList.add(`element-shown`);
     $socialmedia.current.forEach(el => el.classList.add(`element-shown`));
   }, [$title, $subtitle, $socialmedia]);
 
   useEffect(() => {
+    // Hotspot event handler
     $hotspots.current.forEach(spot => {
       spot.addEventListener('mouseover', hotspotHandler);
       spot.addEventListener('click', hotspotHandler);
@@ -28,15 +32,26 @@ const Home = () => {
   }, [$hotspots, $frames]);
 
   const hotspotHandler = ({ currentTarget: spot }) => {
+    // Get ID
     const { id } = spot?.dataset;
     if (!id || id === 0) return;
 
+    // Set trait
+    $trait.current.innerHTML = traits().get(+id);
+
+    // Animate rectangles
+    $rectangles.current.forEach(rectangle => {
+      const randomScale = getRandomArbitrary(.7, 1.2).toFixed(2);
+      const randomXPosition = Math.floor(getRandomArbitrary(-20, 30));
+      rectangle.style.transform = `scaleX(${randomScale}) translateX(${randomXPosition}%)`;
+    });
+    
+    // Hide all frames first
     Object.getOwnPropertyNames($frames.current).forEach(key => {
       $frames.current[key].classList.add(`invisible`)
     });
 
-    $trait.current.innerHTML = traits().get(+id);
-
+    // Get correct frame
     const $frame = $frames.current[+id];
 
     if ($frame) {
@@ -119,9 +134,9 @@ const Home = () => {
                 ))
               }
             </div>
-            <div className="color-rectangle pink"></div>
-            <div className="color-rectangle yellow"></div>
-            <div className="color-rectangle blue"></div>
+            <div ref={el => $rectangles.current[0] = el} className="color-rectangle pink"></div>
+            <div ref={el => $rectangles.current[1] = el} className="color-rectangle yellow"></div>
+            <div ref={el => $rectangles.current[2] = el} className="color-rectangle blue"></div>
           </section>
         </main>
     </div>

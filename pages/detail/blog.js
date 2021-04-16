@@ -57,9 +57,9 @@ const BlogDetail = () => {
             </div>
             <div className="col-row">
               <div className="w-100">
-                <div className="description">
+                { blog.text && <div className="description">
                   <div className="marked" dangerouslySetInnerHTML={{ __html: marked(blog.text) }}></div>
-                </div>
+                </div> }
               </div>
             </div>
           </div>

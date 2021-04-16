@@ -90,13 +90,10 @@ const ProjectDetail = () => {
             </strong>
           </header>
 
-          {/* <p className="project__content-desc">
-            { project.text }
-          </p> */}
-
-          <div className="description">
+          { project.text && <div className="description">
             <div className="marked" dangerouslySetInnerHTML={{ __html: marked(project.text) }}></div>
-          </div>
+          </div> }
+          
           <a href={ project.button } 
             target="_blank" rel="noopener noreferrer"
             className="project__content-link">More</a>

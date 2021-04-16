@@ -11,6 +11,7 @@ import getDate from "../../lib/getDate";
 import path from "../../lib/path";
 
 import { Container } from "../../styles/components/blogStyle";
+import Rellax from 'rellax';
 
 const QUERY = gql`
   {
@@ -30,6 +31,14 @@ const QUERY = gql`
 const BlogList = props => {
   const { loading, error, data } = useQuery(QUERY);
   const $articles = useRef([]);
+
+  useEffect(() => {
+    if (window.innerWidth > 768) {
+      new Rellax(".project__thumbnail img", {
+        center: true
+      });
+    }
+  }, []);
  
   useEffect(() => {
     $articles.current.forEach($article => {
@@ -50,7 +59,6 @@ const BlogList = props => {
         translateY: 0,
         delay: -.1
       });
-      
     });
   });
 
@@ -85,7 +93,7 @@ const BlogList = props => {
                     <h2 className="project__title">{ blog.title }</h2>
                   </header>
                   <div className="project__thumbnail">
-                    <img src={path(blog.thumbnail.url)} />
+                    <img data-rellax-speed="-1" data-rellax-percentage="0.5" alt={blog.title} src={path(blog.thumbnail.url)} />
                   </div>
                 </article>
               </div>

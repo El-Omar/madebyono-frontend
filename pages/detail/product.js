@@ -87,9 +87,9 @@ const ProductDetail = () => {
 
             <div className="col-row">
               <div className="w-100">
-                <div className="description">
+                { product.description && <div className="description">
                   <div className="marked" dangerouslySetInnerHTML={{ __html: marked(product.description) }}></div>
-                </div>
+                </div> }
               </div>
               <div className="w-100">
                 <i className="icon icon--arrow icon--arrow--down"></i>
