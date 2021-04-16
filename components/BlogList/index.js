@@ -38,7 +38,7 @@ const BlogList = props => {
         center: true
       });
     }
-  }, []);
+  });
  
   useEffect(() => {
     $articles.current.forEach($article => {
