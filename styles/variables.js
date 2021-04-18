@@ -1,11 +1,11 @@
 const _cc = color => color.replace(`#`, `%23`);
 
 export const Colors = {
-  yellow: '#f7eb0b',
-  blue: '#3f90de',
-  purple: '#5242c7',
-  gray: `#b7b7b7`,
-  rose: `#d63187`,
+  yellow: '#fff000',
+  blue: '#005ce2',
+  purple: '#5a00e2',
+  gray: `#2a2a2a`,
+  rose: `#f918ff`,
 };
 
 export const Svgs = {

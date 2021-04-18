@@ -12,7 +12,7 @@ const ProductList = ({ products }) => {
           <Link href={`/shop/${product.id}/`}>
             <a>
               <div className="thumbnail thumbnail--3by4">
-                <img src={path(product.thumbnail.url)} />
+                <Image layout="fill" src={path(product.thumbnail.url)} />
               </div>
               <h2 className="item__heading">{ product.name }</h2>
             </a>
@@ -31,32 +31,6 @@ const ProductList = ({ products }) => {
       <h2 className="no-results-found" style={{ paddingLeft: `8px` }}>No products found</h2>
     </div>
   }
-  // if (data.products && data.products.length) {
-  //   return (
-  //     <Styles className="main__container">
-  //       <div className="container">
-  //         <header className="page__heading">
-  //           <h1>
-  //             Showcase Your Work<br/>
-  //             Like a Pro!
-  //           </h1>
-  //         </header>
-  //         <div className="products__wrapper">
-  //           <div className="col-row">
-  //             {
-  //               data.products.map(product => (
-  //                 
-  //               ))
-  //             }
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </Styles>
-  //   );
-  // } else {
-  //   return <h2>No products articles</h2>
-  // }
-
 };
 
 export default ProductList;

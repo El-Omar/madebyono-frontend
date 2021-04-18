@@ -47,8 +47,25 @@ const ProjectDetail = () => {
     carousel();
   },);
 
-  if (error) return <h1>Error loading project detail</h1>
-  if (loading) return <h1>Loading</h1>
+  if (error) return (
+    <div className="container">
+      <div className="col-row">
+        <div className="w-50">
+          <span className="no-results-found">Failed to load</span>
+        </div>
+      </div>
+    </div>
+  );
+
+  if (loading) return (
+    <div className="container">
+      <div className="col-row">
+        <div className="w-50">
+          <div className="loading-box"></div>
+        </div>
+      </div>
+    </div>
+  );
   
   const [project] = data.projects;
 

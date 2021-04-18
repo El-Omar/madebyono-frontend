@@ -40,7 +40,7 @@ export const Styles = styled.div`
       height: 40px;
       text-decoration: none;
       background: ${ Colors.blue };
-      color: white;
+      color: white !important;
       display: flex;
       justify-content: center;
       align-items: center;

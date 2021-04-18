@@ -37,8 +37,25 @@ const ProductDetail = () => {
     variables: { id: id },
   });
 
-  if (error) return "Error Loading Dishes";
-  if (loading) return <h1>Loading ...</h1>;
+  if (error) return (
+    <div className="container">
+      <div className="col-row">
+        <div className="w-50">
+          <span className="no-results-found">Failed to load</span>
+        </div>
+      </div>
+    </div>
+  );
+
+  if (loading) return (
+    <div className="container">
+      <div className="col-row">
+        <div className="w-50">
+          <div className="loading-box"></div>
+        </div>
+      </div>
+    </div>
+  );
 
   if (data.product) {
     const { product } = data;

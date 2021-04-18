@@ -121,7 +121,8 @@ body {
   display: flex;
   justify-content: space-between;
   z-index: 2;
-  padding: 10px;
+  padding: 5px;
+  overflow: hidden;
 }
 
 .hotspot {
@@ -244,7 +245,7 @@ body {
 }
 
 .color-rectangle.pink {
-  background: #d63187;
+  background: #f918ff;
   bottom: 70%;
 }
 
@@ -271,13 +272,13 @@ body {
 }
 
 .color-rectangle.yellow {
-  background: #f7eb0b;
+  background: #fff000;
   bottom: 40%;
   width: 80%;
 }
 
 .color-rectangle.blue {
-  background: #3f90de;
+  background: #005ce2;
   bottom: 10%;
 }
 

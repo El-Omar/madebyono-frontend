@@ -40,14 +40,14 @@ const Blog = () => {
         <span className="no-results-found">Failed to load the shop</span>
       </div>}
 
-      {loading && <>
+      {loading && <div className="col-row">
         <div className="w-50">
           <div className="loading-box"></div>
         </div>
         <div className="w-50">
           <div className="loading-box"></div>
         </div>
-      </>}
+      </div>}
 
       {!error && !loading && <>
         <BlogList articles={data.blogs} />
