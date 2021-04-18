@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['(http://localhost:8082'],
+    domains: ['localhost', 'madebyono.s3.eu-central-1.amazonaws.com'],
   },
 }
