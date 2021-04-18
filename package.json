@@ -24,9 +24,9 @@
     "zustand": "^3.3.3"
   },
   "scripts": {
-    "develop": "node server.js",
+    "develop": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js -p $PORT",
+    "start": "next start",
     "heroku-postbuild": "next build"
   },
   "devDependencies": {

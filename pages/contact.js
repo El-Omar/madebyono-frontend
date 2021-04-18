@@ -38,7 +38,7 @@ const Contact = () => {
           </h2>
         </header>
 
-        <form action="#" className="contact-form" method="post">
+        <form action="https://formsubmit.co/contact@madebyono.com" className="contact-form" method="post">
           <div className="form-group w-5">
             <label htmlFor="name">Name</label>
             <input type="text" name="name" id="name" required />

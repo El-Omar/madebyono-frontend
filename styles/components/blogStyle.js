@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-flow: column;
   background: white;
+  padding-bottom: 50px;
 
   .title {
     font-family: Lato;
@@ -37,8 +38,8 @@ export const Container = styled.div`
       background: #ccc;
       overflow: hidden;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: flex-end;
       transition: all .78s cubic-bezier(.59, .01, .28, 1) 260ms;
 
       &.animated {

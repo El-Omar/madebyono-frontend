@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import { Container as Styles } from "../styles/components/projectStyle";
+import { Container as Styles } from "../../styles/components/projectStyle";
 import Head from "next/head";
 
-import ProjectList from "../components/ProjectList";
-import Categories from "../components/ProjectList/categories";
+import ProjectList from "../../components/ProjectList";
+import Categories from "../../components/ProjectList/categories";
 
 const QUERY = gql`
   {
@@ -46,14 +46,25 @@ const Projects = () => {
 
         <div className={`projects__wrapper ${filter !== "" ? 'filter ' + filter : ''}`}>
           <div className="col-row">
-            {error && <h2>Error loading projects</h2>}
-            {loading && <h1>Loading</h1>}
-            {!error && !loading && 
-              <>
+            
+            {error && <div className="w-100">
+              <span className="no-results-found">Failed to load the projects</span>
+            </div>}
+            
+            {loading && <>
+              <div className="w-50">
+                <div className="loading-box"></div>
+              </div>
+              <div className="w-50">
+                <div className="loading-box"></div>
+              </div>
+            </>}
+            
+            {!error && !loading && <>
                 <Categories categories={data.categories} filter={setFilter} />
                 <ProjectList projects={data.projects} filter={filter} />
-              </>
-            }
+            </>}
+            
           </div>
         </div>
           

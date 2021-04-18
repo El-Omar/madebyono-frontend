@@ -8,10 +8,10 @@ export const Container = styled.div`
     .btn--category {
       all: unset;
       padding: 8px;
-      margin: 0 1rem;
+      margin: 0 .5rem;
       font-family: Lato;
-      color: ${Colors.gray};
-      font-size: 16px;
+      color: #6f6f6f;
+      font-size: 14px;
       cursor: pointer;
       transition: all .1s ease-in-out;
   
