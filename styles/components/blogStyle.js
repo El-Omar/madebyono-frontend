@@ -33,6 +33,7 @@ export const Container = styled.div`
     }
 
     & .project__thumbnail {
+      position: relative;
       width: 90%;
       height: 100%;
       background: #ccc;
@@ -41,16 +42,15 @@ export const Container = styled.div`
       justify-content: center;
       align-items: flex-end;
       transition: all .78s cubic-bezier(.59, .01, .28, 1) 260ms;
-
       &.animated {
         opacity: 1;
         transform: none !important;
       }
 
       & img {
-        width: 100%;
+        /* width: 100%;
         height: 120%;
-        max-height: none;
+        max-height: none; */
         object-fit: cover;
       }
     }

@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 import marked from "marked";
 
 import { Styles } from "../../styles/components/productDetailStyle";
@@ -76,7 +77,7 @@ const ProductDetail = () => {
               </a>
             </Link>
             <div className="thumbnail thumbnail--9by16">
-              <img src={path(product.thumbnail.url)} />
+              <Image layout="fill" src={path(product.thumbnail.url)} />
             </div>
 
             <div className="col-row row--prices">
@@ -108,14 +109,16 @@ const ProductDetail = () => {
                   <div className="marked" dangerouslySetInnerHTML={{ __html: marked(product.description) }}></div>
                 </div> }
               </div>
-              <div className="w-100">
+
+              { product.images?.length && <div className="w-100">
                 <i className="icon icon--arrow icon--arrow--down"></i>
-              </div>
+              </div> }
+              
             </div>
 
             { product.images.map((image, i) => (
               <div className="thumbnail thumbnail--9by16" key={i}>
-                <img src={path(image.url)} />
+                <Image layout="fill" src={path(image.url)} />
               </div>
             )) }
 

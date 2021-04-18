@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 import Layout from "../components/Layout";
 import withData from "../lib/apollo";
@@ -9,24 +9,33 @@ import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import AppContext from "../context/AppContext";
 
-import create from "zustand";
-
+import Loader from "../components/Loader";
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";
 
 import "../styles/index.css";
 import "../styles/styles.scss";
 
-Router.events.on('routeChangeStart', () => NProgress.start()); 
-Router.events.on('routeChangeComplete', () =>  NProgress.done()); 
-Router.events.on('routeChangeError', () => NProgress.done());
-
 const MyApp = ({ Component, pageProps }) => {
   const [user, setUser] = useState(null);
-  // const [cart, setCart] = useState({
-  //   items: [],
-  //   total: 0
-  // });
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = () => {
+      NProgress.start();
+      setLoading(true);
+    };
+    
+    const handleComplete = () => {
+      NProgress.done();
+      setLoading(false);
+    };
+
+    router.events.on('routeChangeStart', handleStart); 
+    router.events.on('routeChangeComplete', handleComplete); 
+    router.events.on('routeChangeError', handleComplete);
+  }, [router]);
 
   useEffect(() => {
     const token = Cookie.get("token");
@@ -49,6 +58,8 @@ const MyApp = ({ Component, pageProps }) => {
         setUser(u => u = user);
       });
     }
+
+    setLoading(false);
   }, []);
 
   // useEffect(() => {
@@ -62,61 +73,6 @@ const MyApp = ({ Component, pageProps }) => {
   //     });
   //   }
   // }, [cart]);
-
-
-  // const addItem = (item) => {
-  //   console.log(cart);
-  //   let { items } = cart;
-  //   //check for item already in cart
-  //   //if not in cart, add item if item is found increase quanity ++
-  //   const newItem = items.find((i) => i.id === item.id);
-  //   // if item is not new, add to cart, set quantity to 1
-  //   if (!newItem) {
-  //     //set quantity property to 1
-  //     item.quantity = 1;
-  //     setCart(c => 
-  //       c = {
-  //         items: [...items, item],
-  //         total: cart.total + item.price,
-  //     }, Cookie.set("cart", cart.items));
-  //   } else {
-  //     setCart(c => 
-  //       c = {
-  //         items: cart.items.map((item) =>
-  //           item.id === newItem.id
-  //             ? Object.assign({}, item, { quantity: item.quantity + 1 })
-  //             : item
-  //         ),
-  //         total: cart.total + item.price,
-  //       }, Cookie.set("cart", cart.items));
-  //   }
-  // };
-  // const removeItem = (item) => {
-  //   let { items } = cart;
-  //   //check for item already in cart
-  //   //if not in cart, add item if item is found increase quanity ++
-  //   const newItem = items.find((i) => i.id === item.id);
-  //   if (newItem.quantity > 1) {
-  //     setCart(c => 
-  //       c = {
-  //         items: this.state.cart.items.map((item) =>
-  //           item.id === newItem.id
-  //             ? Object.assign({}, item, { quantity: item.quantity - 1 })
-  //             : item
-  //         ),
-  //         total: this.state.cart.total - item.price,
-  //       }, Cookie.set("cart", items));
-  //   } else {
-  //     const items = [...cart.items];
-  //     const index = items.findIndex((i) => i.id === newItem.id);
-
-  //     items.splice(index, 1);
-  //     setCart(c => 
-  //       c = { cart: { items: items, total: cart.total - item.price } },
-  //       Cookie.set("cart", items)
-  //     );
-  //   }
-  // }
 
 
   return (
@@ -138,6 +94,8 @@ const MyApp = ({ Component, pageProps }) => {
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossOrigin="anonymous" />
       </Head>
+      
+      { loading && <Loader /> }
 
       <Layout>
         <Component { ...pageProps } />

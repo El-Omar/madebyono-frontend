@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 import marked from "marked";
 
 import { Styles } from "../../styles/components/productDetailStyle";
@@ -70,7 +71,7 @@ const BlogDetail = () => {
               </a>
             </Link>
             <div className="thumbnail thumbnail--9by16">
-              <img src={path(blog.thumbnail.url)} />
+              <Image layout="fill" src={path(blog.thumbnail.url)} />
             </div>
             <div className="col-row">
               <div className="w-100">

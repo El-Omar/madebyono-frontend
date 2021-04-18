@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import path from "../../lib/path";
 
 const ProjestList = ({ projects, filter }) => {
@@ -15,7 +16,7 @@ const ProjestList = ({ projects, filter }) => {
           <Link href={`/projects/${project.slug}/`}>
             <a>
               <div className="thumbnail thumbnail--3by4">
-                <img src={path(project.thumbnail.url)} />
+                <Image layout="fill" src={path(project.thumbnail.url)} />
               </div>
             </a>
           </Link>
