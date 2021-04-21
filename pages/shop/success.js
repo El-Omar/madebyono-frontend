@@ -17,7 +17,7 @@ const useOrder = session_id => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const res = await fetch(path(`/orders/confirm`), {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders/confirm`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json',

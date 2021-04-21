@@ -45,7 +45,7 @@ const Cart = ({ isInCheckout }) => {
     const token = Cookie.get("token");
 
     if (token) {
-      const res = await fetch(path(`/orders`), {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
         method: `POST`,
         body: JSON.stringify({ products: items }),
         headers: {
