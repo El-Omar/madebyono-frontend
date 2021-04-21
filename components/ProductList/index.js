@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import path from "../../lib/path";
-
+import { useStore } from "../../store/cartStore";
 
 const ProductList = ({ products }) => {
+  const { addItem } = useStore();
+
   if (products && products.length) {
     return products.map(product => {
       return (

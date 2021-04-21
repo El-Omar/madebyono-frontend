@@ -143,11 +143,17 @@ export const Styles = styled.div`
     }
 
     .totals {
+   
+      .btn--black {
+        margin-top: 20px;
+        min-width: 120px;
+      }
     }
     
     .total {
       background: #f1f1f1;
       padding: 1rem;
+
 
       &--vat {
         background: white;

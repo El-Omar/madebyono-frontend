@@ -1,17 +1,25 @@
 import React, { useContext, useEffect } from "react";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 import Cookie from "js-cookie";
+
+import { loadStripe } from '@stripe/stripe-js';
+
 import AppContext from "../../context/AppContext";
 import { useStore } from "../../store/cartStore";
 
 import { Styles } from "../../styles/components/cartStyle";
 import CartItems from "./CartItems";
 
+import path from '../../lib/path';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK || `pk_test_51IYzxPDiW4xe7ZTqTx0JTxUbzi55iNuZQ5yz4RAXCaZMi1Jm3BKcMxYzo05dFxbAkZXimkAoENeJB0wMsP5baVLe00eyEGxFlq`);
+
 const Cart = ({ isInCheckout }) => {
   const appContext = useContext(AppContext);
   const { isAuthenticated } = appContext;
   const { items, total, refreshCart } = useStore();
+  const router = useRouter();
 
   useEffect(() => {
     const cart = Cookie.get("cart");
@@ -25,6 +33,37 @@ const Cart = ({ isInCheckout }) => {
       refreshCart(JSON.parse(cart), total);
     }
   }, []);
+
+  const redirectToLogin = () => {
+    router.push('/login');
+  };
+
+  const handleBuy = async () => {
+    const stripe = await stripePromise;
+    console.log(path(`/orders`));
+
+    const token = Cookie.get("token");
+
+    if (token) {
+      const res = await fetch(path(`/orders`), {
+        method: `POST`,
+        body: JSON.stringify({ products: items }),
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        }
+      });
+
+      const session = await res.json();
+      console.log(session);
+      
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+    }
+
+
+  };
 
   return (
     <Styles>
@@ -63,10 +102,11 @@ const Cart = ({ isInCheckout }) => {
                       <strong className="caption">Total</strong>
                       <strong className="value">&euro; { ((total * .21) + total).toFixed(2) }</strong>
                     </div>
-                    { !isInCheckout && 
-                    <Link href={isAuthenticated ? "/checkout" : "/login"}>
-                      <a className="btn btn--black" style={!isInCheckout ? { margin: '1rem 0', display: 'block', } : {}}>PROCEED TO CHECKOUT</a>
-                    </Link> }
+                    
+                    <button className="btn btn--black" onClick={() => !isAuthenticated ? redirectToLogin() : handleBuy()}>
+                      { !isAuthenticated ? `LOGIN TO PROCEED` : `BUY` }
+                    </button>
+
                   </div>
                 </div>
               </div>

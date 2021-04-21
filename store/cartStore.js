@@ -5,7 +5,10 @@ export const useStore = create(set => ({
   items: [],
   total: 0,
   
-  refreshCart: (_items, total) => set(state => ({ items: _items, total: total })),
+  refreshCart: (_items, total) => set(state => {
+    Cookie.set("cart", _items);
+    return { items: _items, total: total };
+  }),
 
   addItem: item => set(state => {
     const items = state.items;

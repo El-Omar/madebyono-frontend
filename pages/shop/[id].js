@@ -14,6 +14,7 @@ import { useStore } from "../../store/cartStore";
 const GET_PRODUCT_DETAIL = gql`
   query($id: ID!) {
     product(id: $id) {
+      id
       name
       slogan
       price
