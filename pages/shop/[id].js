@@ -100,6 +100,7 @@ const ProductDetail = () => {
                 <strong className="caption">Best Price</strong>
                 <button className="btn btn--purchase" onClick={() => {
                   addItem(product);
+                  router.push("/cart");
                 }}>Purchase</button>
               </div>
             </div>

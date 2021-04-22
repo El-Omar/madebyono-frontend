@@ -6,6 +6,9 @@ import { useStore } from "../../store/cartStore";
 const ProductList = ({ products }) => {
   const { addItem } = useStore();
 
+  console.log(products);
+  // console.log(products[0].thumbnail.formats.small.url);
+
   if (products && products.length) {
     return products.map(product => {
       return (
@@ -13,7 +16,7 @@ const ProductList = ({ products }) => {
           <Link href={`/shop/${product.id}/`}>
             <a>
               <div className="thumbnail thumbnail--3by4">
-                <Image layout="fill" src={path(product.thumbnail.url)} />
+                <Image layout="fill" src={path(product.thumbnail.formats.small ? product.thumbnail.formats.small.url : product.thumbnail.formats.thumbnail.url)} />
               </div>
               <h2 className="item__heading">{ product.name }</h2>
             </a>

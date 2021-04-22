@@ -14,7 +14,7 @@ const QUERY = gql`
       title
       slug
       thumbnail {
-        url
+        formats
       }
       button
       categories {

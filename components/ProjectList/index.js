@@ -16,7 +16,7 @@ const ProjestList = ({ projects, filter }) => {
           <Link href={`/projects/${project.slug}/`}>
             <a>
               <div className="thumbnail thumbnail--3by4">
-                <Image layout="fill" src={path(project.thumbnail.url)} />
+                <Image layout="fill" src={path(project.thumbnail.formats.small ? project.thumbnail.formats.small.url : project.thumbnail.formats.thumbnail.url)} />
               </div>
             </a>
           </Link>

@@ -11,7 +11,7 @@ const QUERY = gql`
       id
       name
       thumbnail {
-        url
+        formats
       }
       price
       slug

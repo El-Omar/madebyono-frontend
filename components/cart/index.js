@@ -11,8 +11,6 @@ import { useStore } from "../../store/cartStore";
 import { Styles } from "../../styles/components/cartStyle";
 import CartItems from "./CartItems";
 
-import path from '../../lib/path';
-
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK || `pk_test_51IYzxPDiW4xe7ZTqTx0JTxUbzi55iNuZQ5yz4RAXCaZMi1Jm3BKcMxYzo05dFxbAkZXimkAoENeJB0wMsP5baVLe00eyEGxFlq`);
 
 const Cart = ({ isInCheckout }) => {
@@ -40,8 +38,7 @@ const Cart = ({ isInCheckout }) => {
 
   const handleBuy = async () => {
     const stripe = await stripePromise;
-    console.log(path(`/orders`));
-
+    
     const token = Cookie.get("token");
 
     if (token) {
@@ -61,8 +58,6 @@ const Cart = ({ isInCheckout }) => {
         sessionId: session.id,
       });
     }
-
-
   };
 
   return (
