@@ -21,7 +21,7 @@ const GET_PRODUCT_DETAIL = gql`
       oldprice
       description
       thumbnail {
-        url
+        formats
       }
       images {
         url
@@ -112,7 +112,7 @@ const ProductDetail = () => {
                 </div> }
               </div>
 
-              { product.images?.length && <div className="w-100">
+              { product.images.length > 0 && <div className="w-100">
                 <i className="icon icon--arrow icon--arrow--down"></i>
               </div> }
               

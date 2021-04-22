@@ -39,7 +39,7 @@ const Projects = () => {
       <div className="container">
         <header className="page__heading">
           <h1>
-            Discover our<br/>
+            Discover our <br/>
             High-end designs.
           </h1>
         </header>
