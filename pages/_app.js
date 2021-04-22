@@ -24,12 +24,12 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleStart = () => {
       NProgress.start();
-      setLoading(true);
+      // setLoading(true);
     };
     
     const handleComplete = () => {
       NProgress.done();
-      setLoading(false);
+      // setLoading(false);
     };
 
     router.events.on('routeChangeStart', handleStart); 
@@ -59,7 +59,9 @@ const MyApp = ({ Component, pageProps }) => {
       });
     }
 
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
   }, []);
 
   // useEffect(() => {
