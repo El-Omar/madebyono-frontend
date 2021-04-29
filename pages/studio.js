@@ -76,14 +76,14 @@ let’s get to work and practice problem solving together.
                 <h2 className="skills__title">Skills</h2>
               </header>
               <ul className="skills__content">
-                <li className="skills__content__item">Brand Identities</li>
-                <li className="skills__content__item">Print Design</li>
-                <li className="skills__content__item">UI/UX Design</li>
-                <li className="skills__content__item">Art &amp; Illustration</li>
-                <li className="skills__content__item">Motion Graphics</li>
-                <li className="skills__content__item">Front-end Development</li>
+                <li className="skills__content__item">Social Media Content</li>
+                <li className="skills__content__item">Logo/Brand Design</li>
+                <li className="skills__content__item">UI/UX Webdesign</li>
+                <li className="skills__content__item">Illustrations</li>
+                <li className="skills__content__item">Artworks</li>
                 <li className="skills__content__item">Video editing</li>
                 <li className="skills__content__item">Photo retouching</li>
+                <li className="skills__content__item">Advertising</li>
               </ul>
             </article>
           </div>
