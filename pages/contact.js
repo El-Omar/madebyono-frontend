@@ -16,11 +16,11 @@ const Contact = () => {
       </Head>
       <div className="contact-intro spacing rellax" data-rellax-speed="-1">
         <strong className="contact__subtitle">
-          <strong className="color--purple">A Digital Agency</strong> - Hello
+          <strong className="color--purple">A Digital Creative</strong> - Hello
         </strong>
 
         <h2 className="contact__title">
-          We create beautiful digital design and bring your mental creation to life.
+          Let&apos;s brand your idea and kickstart your business now!
         </h2>
 
         <a className="contact__btn" 
@@ -33,8 +33,8 @@ const Contact = () => {
       <section className="contact-footer spacing">
         <header className="contact-footer__head rellax" data-rellax-speed="0">
           <h2>
-            Need help with a project? <br />
-            Let's build something together.
+            Want to join? <br />
+            Request a collaboration or apply spontaneously.
           </h2>
         </header>
 
