@@ -75,7 +75,7 @@ const Home = () => {
       <Head>
         <title>Home - Madebyono</title>
       </Head>
-        <div className="hotspot__wrapper on-top">
+        {/* <div className="hotspot__wrapper on-top">
           {
             new Array(5).fill("row").map((_, i) => (
                 <div className="hotspot__row" key={i}>
@@ -92,7 +92,7 @@ const Home = () => {
                 </div>
               ))
           }
-        </div>
+        </div> */}
 
         <aside className="social-media-side on-top">
           <a rel="noreferer"
@@ -124,12 +124,12 @@ const Home = () => {
 
             <div className="frame__wrap">
               <div className="frame-container" ref={el => $tempFrame.current = el}>
-                <Image className="frame--current" src={`/assets/img/frames/13.png`} width="1850" height="1500" />
+                <img className="frame--current" src={`/assets/img/frames/13.png`} width="1850" height="1500" />
               </div>
               {
                 Object.getOwnPropertyNames(frames()).map((name, i) => (
                   <div className="frame-container invisible" key={name} ref={el => $frames.current[name] = el}>
-                    <Image className="frame" src={frames()[name]} width="1850" height="1500" />
+                    <img className="frame" src={frames()[name]} width="1850" height="1500" />
                   </div>
                 ))
               }
