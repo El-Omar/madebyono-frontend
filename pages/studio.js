@@ -60,16 +60,12 @@ const Studio = () => {
                 <h2 className="vision__title">Vision</h2>
               </header>
               <p className="vision__content">
-                <strong>Innovation</strong>, <strong>Dedication</strong> and <strong>Interdependency</strong> are 
-                the 3 main pillars upon which my brand stands. 
-                I am dedicated to provide a <strong>solution </strong> and 
-                work interdependend with fellow creatives and 
-                entrepreneurs to deliver <strong>high-end</strong> products. Im an 
-                eternal student striving to improve as an individual 
-                and a creative innovator designing <strong>sustainable</strong> products. 
-                Prioritising <strong>emotional relevancy</strong> and <strong>clear communication</strong> creating <strong>impact</strong>. 
-                My goal is to provide both relevant and creative solutions that meet the 
-                objectives with a <strong>human centric</strong> approach. <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong> and experience my full-service.
+                <strong>Save time</strong>, <strong>stay effective</strong> and let me take care of <strong>your branding</strong> /
+webdesign & social media content creation. On a budget? Take at look my shop for DIY social media kits, professional designed and editable in powerpoint.
+I am a young freelance designer & entrepreneur who is aiming to support and kickstart startups / individuals with a passion for entrepreneurship.
+My objective is to help, advice and bring you in contact with other young and valuable partners who can help you with advertising,
+app development or audio-visual work. Don’t hesitate to <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong>,
+let’s get to work and practice problem solving together. 
               </p>
             </article>
           </div>
