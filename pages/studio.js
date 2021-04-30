@@ -60,12 +60,11 @@ const Studio = () => {
                 <h2 className="vision__title">Vision</h2>
               </header>
               <p className="vision__content">
-                <strong>Save time</strong>, <strong>stay effective</strong> and let me take care of <strong>your branding</strong> /
-webdesign & social media content creation. On a budget? Take at look my shop for DIY social media kits, professional designed and editable in powerpoint.
-I am a young freelance designer & entrepreneur who is aiming to support and kickstart startups / individuals with a passion for entrepreneurship.
-My objective is to help, advice and bring you in contact with other young and valuable partners who can help you with advertising,
-app development or audio-visual work. Don’t hesitate to <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong>,
-let’s get to work and practice problem solving together. 
+                Hand out your digital obligations so you can <strong>Save time</strong>, <strong>stay effective</strong> and focuson the core of your business. My job is to brand your idea, design your social media content, make the audience resonate with your startup and help you communicate with potential costumers on a graphic level. On a budget? Take at look my shop for DIY social media kits. These content creation kits are professional designed and editable in powerpoint.
+I am Yoshi De Schrijver, known as Yoshi Ono, a geeky freelance designer & entrepreneur who is aiming to support and kickstart startups / individuals with a passion for entrepreneurship.te
+My objective is to help, advice and bring you in contact with other young and valuable partners who can help you with your objective such as advertising,
+app development, audio-visual work and so on. Don’t hesitate to <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong>,
+let’s get to work, practice problem solving together and make a change. 
               </p>
             </article>
           </div>
