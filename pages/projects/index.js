@@ -39,8 +39,8 @@ const Projects = () => {
       <div className="container">
         <header className="page__heading">
           <h1>
-            Discover our <br/>
-            High-end designs.
+            Collabs, Projects<br/>
+            &amp; High-end Designs.
           </h1>
         </header>
 

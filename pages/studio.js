@@ -60,16 +60,10 @@ const Studio = () => {
                 <h2 className="vision__title">Vision</h2>
               </header>
               <p className="vision__content">
-                <strong>Innovation</strong>, <strong>Dedication</strong> and <strong>Interdependency</strong> are 
-                the 3 main pillars upon which my brand stands. 
-                I am dedicated to provide a <strong>solution </strong> and 
-                work interdependend with fellow creatives and 
-                entrepreneurs to deliver <strong>high-end</strong> products. Im an 
-                eternal student striving to improve as an individual 
-                and a creative innovator designing <strong>sustainable</strong> products. 
-                Prioritising <strong>emotional relevancy</strong> and <strong>clear communication</strong> creating <strong>impact</strong>. 
-                My goal is to provide both relevant and creative solutions that meet the 
-                objectives with a <strong>human centric</strong> approach. <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong> and experience my full-service.
+                Hand out your digital obligations so you can <strong>Save time</strong>, <strong>stay effective</strong> and focuson the core of your business. My job is to brand your idea, design your social media content, make the audience resonate and communicate with potential costumers. On a budget? Take at look at <strong className="contact"><Link href="/contact"><a>My Shop</a></Link></strong> for DIY social media kits. These content creation kits are designed professionally and editable in powerpoint.
+I am Yoshi Ono, a geeky freelance designer & entrepreneur who is aiming to support and kickstart startups / individuals with a passion for entrepreneurship.
+My objective is to help, advice and bring you in contact with other young and valuable partners who can help you with your objective. Don’t hesitate to <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong>,
+let’s get to work, practice problem solving together and make a change. 
               </p>
             </article>
           </div>
@@ -80,14 +74,14 @@ const Studio = () => {
                 <h2 className="skills__title">Skills</h2>
               </header>
               <ul className="skills__content">
-                <li className="skills__content__item">Brand Identities</li>
-                <li className="skills__content__item">Print Design</li>
-                <li className="skills__content__item">UI/UX Design</li>
-                <li className="skills__content__item">Art &amp; Illustration</li>
-                <li className="skills__content__item">Motion Graphics</li>
-                <li className="skills__content__item">Front-end Development</li>
+                <li className="skills__content__item">Social Media Content</li>
+                <li className="skills__content__item">Logo/Brand Design</li>
+                <li className="skills__content__item">UI/UX Webdesign</li>
+                <li className="skills__content__item">Illustrations</li>
+                <li className="skills__content__item">Artworks</li>
                 <li className="skills__content__item">Video editing</li>
                 <li className="skills__content__item">Photo retouching</li>
+                <li className="skills__content__item">Advertising</li>
               </ul>
             </article>
           </div>
