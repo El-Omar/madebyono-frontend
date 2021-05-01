@@ -5,6 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import marked from "marked";
+import { useAlert } from 'react-alert'
 
 import { Styles } from "../../styles/components/productDetailStyle";
 import path from "../../lib/path";
@@ -32,6 +33,7 @@ const GET_PRODUCT_DETAIL = gql`
 
 const ProductDetail = () => {
   const { addItem } = useStore();
+  const alert = useAlert();
 
   const router = useRouter();
   const { id } = router.query; 
@@ -78,7 +80,7 @@ const ProductDetail = () => {
               </a>
             </Link>
             <div className="thumbnail thumbnail--9by16">
-              <Image layout="fill" src={path(product.thumbnail.url)} />
+              <Image layout="fill" src={path(product.thumbnail.formats.thumbnail.url)} />
             </div>
 
             <div className="col-row row--prices">
@@ -100,6 +102,7 @@ const ProductDetail = () => {
                 <strong className="caption">Best Price</strong>
                 <button className="btn btn--purchase" onClick={() => {
                   addItem(product);
+                  alert.show("Product added to the cart");
                   router.push("/cart");
                 }}>Purchase</button>
               </div>

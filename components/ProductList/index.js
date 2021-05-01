@@ -3,12 +3,12 @@ import Image from "next/image";
 import path from "../../lib/path";
 import { useStore } from "../../store/cartStore";
 
+import { useAlert } from 'react-alert'
+
 const ProductList = ({ products }) => {
   const { addItem } = useStore();
-
-  console.log(products);
-  // console.log(products[0].thumbnail.formats.small.url);
-
+  const alert = useAlert();
+  
   if (products && products.length) {
     return products.map(product => {
       return (
@@ -22,7 +22,10 @@ const ProductList = ({ products }) => {
             </a>
           </Link>
           <div className="d-flex justify-content-between align-items-center">
-            <button className="btn add-to-cart" onClick={() => addItem(product)}>
+            <button className="btn add-to-cart" onClick={() => {
+              addItem(product);
+              alert.show("Product added to the cart");
+            }}>
               <strong className="price">&euro; { product.price.toFixed(2) }</strong>
               <strong className="add-title">Add to cart</strong>  
             </button>

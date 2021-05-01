@@ -5,16 +5,26 @@ import { useRouter } from 'next/router';
 import Layout from "../components/Layout";
 import withData from "../lib/apollo";
 
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+
 import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import AppContext from "../context/AppContext";
 
-import Loader from "../components/Loader";
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";
 
+import Loader from "../components/Loader";
 import "../styles/index.css";
 import "../styles/styles.scss";
+
+const alertOptions = {
+  position: positions.TOP_RIGHT,
+  timeout: 3000,
+  offset: '30px',
+  // transition: transitions.FADE
+}
 
 const MyApp = ({ Component, pageProps }) => {
   const [user, setUser] = useState(null);
@@ -64,45 +74,32 @@ const MyApp = ({ Component, pageProps }) => {
     }, 1200);
   }, []);
 
-  // useEffect(() => {
-  //   const cart = Cookie.get("cart");
-
-  //   if (typeof cart === "string" && cart !== "undefined") {
-  //     JSON.parse(cart).forEach((item) => {
-  //       setCart({
-  //         cart: { items: JSON.parse(cart), total: item.price * item.quantity },
-  //       });
-  //     });
-  //   }
-  // }, [cart]);
-
 
   return (
-    <AppContext.Provider 
-      value={{
-        user: user,
-        isAuthenticated: !!user,
-        setUser: setUser,
-        // cart: cart,
-        // addItem: addItem,
-        // removeItem: removeItem,
-      }}>
-      <Head>
-        <meta name="dev:creator" content="Elomar" />
-        <link rel="shortcut icon" href="/assets/img/favicon.png" />
-        <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossOrigin="anonymous" />
-      </Head>
-      
-      { loading && <Loader /> }
+    <AlertProvider template={AlertTemplate} {...alertOptions}>
+      <AppContext.Provider 
+        value={{
+          user: user,
+          isAuthenticated: !!user,
+          setUser: setUser,
+        }}>
+        <Head>
+          <meta name="dev:creator" content="Elomar" />
+          <link rel="shortcut icon" href="/assets/img/favicon.png" />
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossOrigin="anonymous" />
+        </Head>
+        
+        { loading && <Loader /> }
 
-      <Layout>
-        <Component { ...pageProps } />
-      </Layout>
-    </AppContext.Provider>
+        <Layout>
+          <Component { ...pageProps } />
+        </Layout>
+      </AppContext.Provider>
+    </AlertProvider>
   );
 };
 

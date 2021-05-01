@@ -75,7 +75,7 @@ const Home = () => {
       <Head>
         <title>Home - Madebyono</title>
       </Head>
-        {/* <div className="hotspot__wrapper on-top">
+        <div className="hotspot__wrapper on-top">
           {
             new Array(5).fill("row").map((_, i) => (
                 <div className="hotspot__row" key={i}>
@@ -92,7 +92,7 @@ const Home = () => {
                 </div>
               ))
           }
-        </div> */}
+        </div>
 
         <aside className="social-media-side on-top">
           <a rel="noreferer"
