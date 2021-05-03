@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="w-33">
             <div className="footer__logo">
               <img src='/assets/img/logo.png' alt="Logo" className="footer__logoImg" />
-              {new Date().getFullYear()} - The sign for startups
+              {new Date().getFullYear()} - Aligning design to visions.
             </div>
           </div>
           <div className="w-33">
