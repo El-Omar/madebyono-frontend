@@ -33,8 +33,8 @@ const Contact = () => {
       <section className="contact-footer spacing">
         <header className="contact-footer__head rellax" data-rellax-speed="0">
           <h2>
-            Want to join? <br />
-            Request a collaboration or apply spontaneously.
+            Want to join me? <br />
+            Request a collab or apply spontaneously.
           </h2>
         </header>
 
