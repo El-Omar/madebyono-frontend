@@ -30,7 +30,7 @@ const Shop = () => {
       <div className="container">
         <header className="page__heading">
           <h1>
-            Showcase Your Work<br/>
+            Showcase Your Work <br/>
             Like a Pro!
           </h1>
         </header>
