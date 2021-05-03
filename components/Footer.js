@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="w-33">
             <div className="footer__logo">
               <img src='/assets/img/logo.png' alt="Logo" className="footer__logoImg" />
-              {new Date().getFullYear()} - Designing values for brands
+              {new Date().getFullYear()} - The sign for startups
             </div>
           </div>
           <div className="w-33">
