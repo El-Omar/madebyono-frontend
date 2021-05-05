@@ -60,7 +60,7 @@ const Studio = () => {
                 <h2 className="vision__title">Vision</h2>
               </header>
               <p className="vision__content">
-                Hand out your digital obligations so you can <strong>Save time</strong>, <strong>stay effective</strong> and focuson the core of your business. My job is to brand your idea, design your social media content, make the audience resonate and communicate with potential costumers. On a budget? Take at look at <strong className="contact"><Link href="/contact"><a>My Shop</a></Link></strong> for DIY social media kits. These content creation kits are designed professionally and editable in powerpoint.
+                Hand out your digital obligations so you can <strong>Save time</strong>, <strong>stay effective</strong> and focus on the core of your business. My job is to brand your idea, design your graphics, social media content, make your potential costumers resonate. On a budget? Take at look at <strong className="contact"><Link href="/contact"><a>My Shop</a></Link></strong> for DIY social media kits. These content creation kits are designed professionally and editable in powerpoint.
 I am Yoshi Ono, a geeky freelance designer & entrepreneur who is aiming to support and kickstart startups / individuals with a passion for entrepreneurship.
 My objective is to help, advice and bring you in contact with other young and valuable partners who can help you with your objective. Don’t hesitate to <strong className="contact"><Link href="/contact"><a>Contact me</a></Link></strong>,
 let’s get to work, practice problem solving together and make a change. 
