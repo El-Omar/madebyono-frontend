@@ -23,18 +23,19 @@ const options = {
   // pages: {
   //   signIn: '/signin',
   // },
-  database: {
-    type: "mongodb",
-    port: process.env.DATABASE_PORT,
-    host: process.env.DATABASE_HOST,
-    database: process.env.DATABASE_NAME,
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    // ssl: {
-    //   rejectUnauthorized: false,
-    //   ca: fs.readFileSync('/path/to/server-certificates/root.crt').toString()
-    // },
-  }
+  database: process.env.DATABASE_URL,
+  // database: {
+  //   type: "mongodb",
+  //   port: process.env.DATABASE_PORT,
+  //   host: process.env.DATABASE_HOST,
+  //   database: process.env.DATABASE_NAME,
+  //   username: process.env.DATABASE_USERNAME,
+  //   password: process.env.DATABASE_PASSWORD,
+  //   // ssl: {
+  //   //   rejectUnauthorized: false,
+  //   //   ca: fs.readFileSync('/path/to/server-certificates/root.crt').toString()
+  //   // },
+  // }
 };
 
 export default (req, res) => NextAuth(req, res, options);
