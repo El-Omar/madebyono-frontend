@@ -34,20 +34,24 @@ const Register = () => {
               <h1 className="page__heading">Register</h1>
             </div>
             <section className="wrapper">
-              {Object.entries(error).length !== 0 &&
-                error.constructor === Object &&
-                error.message.map((error) => {
-                  return (
-                    <div
-                      key={error.messages[0].id}
-                      style={{ marginBottom: 10 }}
-                    >
-                      <small style={{ color: "red" }}>
-                        {error.messages[0].message}
-                      </small>
-                    </div>
-                  );
-                })}
+            {/* error.constructor === Object &&
+                error.message.map((error) */}
+              {Object.entries(error).length !== 0 && 
+                 
+                  console.log(error) &&
+
+                  (
+                    <h1>Error</h1>
+                    // <div
+                    //   key={error.messages[0].id}
+                    //   style={{ marginBottom: 10 }}
+                    // >
+                    //   <small style={{ color: "red" }}>
+                    //     {error.messages[0].message}
+                    //   </small>
+                    // </div>
+                  )
+                }
               <Form>
                 <fieldset disabled={loading}>
                   <FormGroup>

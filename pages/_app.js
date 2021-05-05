@@ -5,12 +5,14 @@ import { useRouter } from 'next/router';
 import Layout from "../components/Layout";
 import withData from "../lib/apollo";
 
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import { positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 
 import Cookie from "js-cookie";
 import fetch from "isomorphic-fetch";
 import AppContext from "../context/AppContext";
+
+import { Provider as AuthProvider } from "next-auth/client";
 
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";
@@ -23,7 +25,6 @@ const alertOptions = {
   position: positions.TOP_RIGHT,
   timeout: 3000,
   offset: '30px',
-  // transition: transitions.FADE
 }
 
 const MyApp = ({ Component, pageProps }) => {
@@ -76,30 +77,32 @@ const MyApp = ({ Component, pageProps }) => {
 
 
   return (
-    <AlertProvider template={AlertTemplate} {...alertOptions}>
-      <AppContext.Provider 
-        value={{
-          user: user,
-          isAuthenticated: !!user,
-          setUser: setUser,
-        }}>
-        <Head>
-          <meta name="dev:creator" content="Elomar" />
-          <link rel="shortcut icon" href="/assets/img/favicon.png" />
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossOrigin="anonymous" />
-        </Head>
-        
-        { loading && <Loader /> }
+    <AuthProvider session={ pageProps?.session }>
+      <AlertProvider template={AlertTemplate} {...alertOptions}>
+        <AppContext.Provider 
+          value={{
+            user: user,
+            isAuthenticated: !!user,
+            setUser: setUser,
+          }}>
+          <Head>
+            <meta name="dev:creator" content="Elomar" />
+            <link rel="shortcut icon" href="/assets/img/favicon.png" />
+            <link
+              rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossOrigin="anonymous" />
+          </Head>
+          
+          { loading && <Loader /> }
 
-        <Layout>
-          <Component { ...pageProps } />
-        </Layout>
-      </AppContext.Provider>
-    </AlertProvider>
+          <Layout>
+            <Component { ...pageProps } />
+          </Layout>
+        </AppContext.Provider>
+      </AlertProvider>
+    </AuthProvider>
   );
 };
 

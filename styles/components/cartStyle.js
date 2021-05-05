@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../variables';
 
 export const Styles = styled.div`
   font-family: Helvetica;
@@ -164,5 +165,25 @@ export const Styles = styled.div`
       display: inline-block;
       width: 120px;
     }
+  }
+
+  .btn--purchase {
+    display: block;
+  }
+
+  .user-email {
+
+    &-label {
+      display: block;
+      margin-top: 20px;
+    }
+  }
+
+  .btn-signout {
+    all: unset;
+    color: ${Colors.blue};
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
   }
 `;

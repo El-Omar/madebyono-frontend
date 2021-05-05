@@ -5,6 +5,8 @@ import Cookie from "js-cookie";
 
 import { loadStripe } from '@stripe/stripe-js';
 
+import { signIn, signOut, useSession, getSession } from "next-auth/client";
+
 import AppContext from "../../context/AppContext";
 import { useStore } from "../../store/cartStore";
 
@@ -14,10 +16,9 @@ import CartItems from "./CartItems";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK || `pk_test_51IYzxPDiW4xe7ZTqTx0JTxUbzi55iNuZQ5yz4RAXCaZMi1Jm3BKcMxYzo05dFxbAkZXimkAoENeJB0wMsP5baVLe00eyEGxFlq`);
 
 const Cart = ({ isInCheckout }) => {
-  const appContext = useContext(AppContext);
-  const { isAuthenticated } = appContext;
   const { items, total, refreshCart } = useStore();
-  const router = useRouter();
+  
+  const [session, loading] = useSession();
 
   useEffect(() => {
     const cart = Cookie.get("cart");
@@ -32,27 +33,22 @@ const Cart = ({ isInCheckout }) => {
     }
   }, []);
 
-  const redirectToLogin = () => {
-    router.push('/login');
-  };
-
   const handleBuy = async () => {
     const stripe = await stripePromise;
-    
-    const token = Cookie.get("token");
 
-    if (token) {
+    const authenticatedSession = await getSession();
+
+    if (authenticatedSession) {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
         method: `POST`,
-        body: JSON.stringify({ products: items }),
+        body: JSON.stringify({ products: items, email: authenticatedSession.user.email }),
         headers: {
           'Content-type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          // 'Authorization': `Bearer ${token}`,
         }
       });
 
       const session = await res.json();
-      console.log(session);
       
       const result = await stripe.redirectToCheckout({
         sessionId: session.id,
@@ -98,8 +94,14 @@ const Cart = ({ isInCheckout }) => {
                       <strong className="value">&euro; { ((total * .21) + total).toFixed(2) }</strong>
                     </div>
                     
-                    <button className="btn btn--black" onClick={() => !isAuthenticated ? redirectToLogin() : handleBuy()}>
-                      { !isAuthenticated ? `LOGIN TO PROCEED` : `BUY` }
+                    {
+                      session && <>
+                        <span className="user-email-label">Products will be sent to: </span>
+                        <strong className="user-email">{session.user.email}</strong>, <button className="btn-signout" onClick={signOut}>Sign out</button>
+                      </>
+                    }
+                    <button className="btn btn--black btn--purchase" onClick={() => !session ? signIn() : handleBuy()}>
+                      { !session ? `LOGIN TO PROCEED` : `BUY` }
                     </button>
 
                   </div>

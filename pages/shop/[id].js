@@ -22,7 +22,7 @@ const GET_PRODUCT_DETAIL = gql`
       oldprice
       description
       thumbnail {
-        formats
+        url
       }
       images {
         url
@@ -80,7 +80,7 @@ const ProductDetail = () => {
               </a>
             </Link>
             <div className="thumbnail thumbnail--9by16">
-              <Image layout="fill" src={path(product.thumbnail.formats.thumbnail.url)} />
+              <Image layout="fill" src={path(product.thumbnail.url)} />
             </div>
 
             <div className="col-row row--prices">
