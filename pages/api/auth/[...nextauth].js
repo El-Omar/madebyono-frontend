@@ -25,7 +25,7 @@ const options = {
   // },
   database: {
     type: "mongodb",
-    // port: 26257,
+    port: process.env.DATABASE_PORT,
     host: process.env.DATABASE_HOST,
     database: process.env.DATABASE_NAME,
     username: process.env.DATABASE_USERNAME,
