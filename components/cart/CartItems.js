@@ -7,6 +7,8 @@ const CartItems = ({ isInCheckout }) => {
   const [isMobile, setIsMobile] = useState(false);
   const { items, addItem, removeItem, deleteItem } = useStore();
 
+  console.log("Items yeee", items);
+
   useEffect(() => {
     setIsMobile(isInCheckout || window.innerWidth < 1024);
   }, []);
