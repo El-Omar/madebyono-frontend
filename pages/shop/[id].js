@@ -22,7 +22,7 @@ const GET_PRODUCT_DETAIL = gql`
       oldprice
       description
       thumbnail {
-        url
+        formats
       }
       images {
         url
