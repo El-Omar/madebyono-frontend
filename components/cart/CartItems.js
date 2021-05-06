@@ -37,7 +37,7 @@ const CartItems = ({ isInCheckout }) => {
                       <Link href={`/shop/${item.id}/`}>
                         <a className="cover--link"></a>
                       </Link>
-                      <img src={path(item.thumbnail.formats.small ? item.thumbnail.formats.small.url : item.thumbnail.formats.thumbnail.url)} alt="Image"/>
+                      <img src={path(item.thumbnail.formats?.small ? item.thumbnail.formats.small.url : item.thumbnail.formats.thumbnail.url)} alt="Image"/>
                     </div>
                   </div>
                 </td>
@@ -76,7 +76,7 @@ const CartItems = ({ isInCheckout }) => {
                 <Link href={`/shop/`}>
                   <a className="cover--link"></a>
                 </Link>
-                <img src={path(item.thumbnail.formats.small ? item.thumbnail.formats.small.url : item.thumbnail.formats.thumbnail.url)} alt="Image" />
+                <img src={path(item.thumbnail.formats?.small ? item.thumbnail.formats.small.url : item.thumbnail.formats.thumbnail.url)} alt="Image" />
               </div>
             }
             <button className="remove-item" aria-label="Remove item" onClick={() => deleteItem(item)}>x</button>
