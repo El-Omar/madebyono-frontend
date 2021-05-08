@@ -23,7 +23,7 @@ const options = {
   // pages: {
   //   signIn: '/signin',
   // },
-  database: `mongodb+srv://vercelapp:s8DPNVX8WtjMMWl4@madebyono.w8efb.mongodb.net/Madebyono`,
+  database: process.env.DATABASE_URL,
   // database: {
   //   type: "mongodb",
   //   port: process.env.DATABASE_PORT,
