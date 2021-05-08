@@ -1,13 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Cookie from "js-cookie";
 
 import { loadStripe } from '@stripe/stripe-js';
 
 import { signIn, signOut, useSession, getSession } from "next-auth/client";
 
-import AppContext from "../../context/AppContext";
 import { useStore } from "../../store/cartStore";
 
 import { Styles } from "../../styles/components/cartStyle";
