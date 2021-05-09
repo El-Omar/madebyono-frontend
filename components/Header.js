@@ -34,8 +34,9 @@ const Header = ({ setBodyOverlay }) => {
         <header className="page__header">
           <h1 className="page__title pointer"> 
             <Link href="/">
-              <a>
-                <img className="logo" src="/assets/img/logo.png" alt="Logo" />
+              <a className="logo">
+                {/* <img className="logo" src="/assets/img/logo.png" alt="Logo" /> */}
+                yoshi ono
               </a>
             </Link>
           </h1> 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Container } from '../styles/components/footerStyles';
 
 const Footer = () => {
@@ -9,8 +10,12 @@ const Footer = () => {
         <div className="col-row">
           <div className="w-33">
             <div className="footer__logo">
-              <img src='/assets/img/logo.png' alt="Logo" className="footer__logoImg" />
-              {new Date().getFullYear()} - Aligning design to your vision.
+              <Link href="/"><a className="logo logo--footer">Yoshi ono</a></Link>
+              &nbsp;-&nbsp;
+              <span>
+                {/* {new Date().getFullYear()} -  */}
+                Aligning design to your vision.
+              </span>
             </div>
           </div>
           <div className="w-33">

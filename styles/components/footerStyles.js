@@ -5,7 +5,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-family: Avenir;
+  font-family: Lato;
+  font-size: 14px;
 
   .container {
     padding-top: 0;

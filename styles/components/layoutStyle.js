@@ -9,6 +9,20 @@ export const Container = styled.section`
     overflow: hidden;
   }
 
+  .logo {
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 32px;
+    text-transform: lowercase;
+
+    &--footer {
+      font-size: 14px;
+      text-transform: none;
+      /* display: inline-block; */
+      /* margin-right: 10px; */
+    }
+  }
+
   .page__header {
     width: 100%;
     height: 80px;
