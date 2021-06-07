@@ -6,7 +6,7 @@ export default () => {
   traits.set(5, "I'm Great at Logo Design");
   traits.set(7, "An Introvert Wannabe Extravert");
   traits.set(8, "I Align brands to visions");
-  traits.set(9, "I Have An Awesome Shop");
+  traits.set(9, "I Have A Shop For Startups");
   traits.set(11, "Master in Photoshop");
   traits.set(12, "Not Just An IT Guy");
   traits.set(13, "AKA The Creative Sensei");
