@@ -12,11 +12,11 @@ export default () => {
   traits.set(13, "AKA The Creative Sensei");
   traits.set(14, "A Business, Man");
   traits.set(15, "A Very Popular Loner");
-  traits.set(17, "I Drink Both Coffee And Tea");
+  traits.set(17, "Shop Discount: EASTEREGG10);
   traits.set(18, "Part Time Grocery Clerk");
   traits.set(19, "A Guy Chasing His Dreams");
-  traits.set(21, "An Art Junky & Musician");
-  traits.set(23, "An Analytical Designer");
+  traits.set(21, "Art Junky & Musician");
+  traits.set(23, "Analytical Designer");
   traits.set(25, "The Imagineer");
   
   return traits;
