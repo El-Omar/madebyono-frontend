@@ -75,7 +75,7 @@ const Header = ({ setBodyOverlay }) => {
                     </Link>
                   </li>
                   <li className="navigation__link page__link-shop">
-                    <Link href="/shop">
+                    <Link href="http://startup-kits.webflow.io/">
                       <a className="link-wrap">
                         <span className="link-title color--yellow">Handy</span> <span className="page-name">Shop</span>
                       </a>
