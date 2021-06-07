@@ -74,17 +74,17 @@ const Header = ({ setBodyOverlay }) => {
                       </a>
                     </Link>
                   </li>
-                  <li className="navigation__link page__link-shop">
-                    <Link href="http://startup-kits.webflow.io/" target="_blank">
-                      <a className="link-wrap">
-                        <span className="link-title color--yellow">Handy</span> <span className="page-name">Startup Kits</span>
-                      </a>
-                    </Link>
-                  </li>
                   <li className="navigation__link page__link-blog">
                     <Link href="/blog">
                       <a className="link-wrap">
                         <span className="link-title color--purple">Design</span> <span className="page-name">Blog</span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="navigation__link page__link-shop">
+                    <Link href="http://startup-kits.webflow.io/" target="_blank">
+                      <a className="link-wrap">
+                        <span className="link-title color--yellow">Handy</span> <span className="page-name">Startup Kits</span>
                       </a>
                     </Link>
                   </li>
