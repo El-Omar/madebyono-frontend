@@ -50,7 +50,7 @@ const Header = ({ setBodyOverlay }) => {
               <div className="nav-x"></div>
               <div className="nav-y"></div>
             </div>
-            <Link href="/cart"><a className="cart__btn"></a></Link>
+            <Link href="http://www.startupkits.shop"><a className="cart__btn"></a></Link>
           </div>
         </header>
 
