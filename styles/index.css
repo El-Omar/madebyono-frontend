@@ -245,7 +245,7 @@ body {
 }
 
 .color-rectangle.pink {
-  background: #f918ff;
+  background: #e80288;
   bottom: 70%;
 }
 
@@ -272,13 +272,13 @@ body {
 }
 
 .color-rectangle.yellow {
-  background: #fff000;
+  background: #f8eb00;
   bottom: 40%;
   width: 80%;
 }
 
 .color-rectangle.blue {
-  background: #005ce2;
+  background: #078fe4;
   bottom: 10%;
 }
 
