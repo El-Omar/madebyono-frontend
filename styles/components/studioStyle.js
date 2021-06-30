@@ -74,7 +74,7 @@ export const Container = styled.div`
     align-items: flex-start;
 
     &__title {
-      color: ${Colors.blue};
+      color: ${Colors.pink};
     }
 
     &__header {
