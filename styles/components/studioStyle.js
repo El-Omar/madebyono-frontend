@@ -98,7 +98,7 @@ export const Container = styled.div`
   .passion {
 
     &__title {
-      color: ${Colors.purple};
+      color: ${Colors.yellow};
       font-size: 18px;
       font-family: Montserrat;
       font-weight: 600;
