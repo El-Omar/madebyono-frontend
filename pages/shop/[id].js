@@ -99,15 +99,6 @@ const ProductDetail = () => {
               </div>
 
 
-//              <div className="w-33">
-//                <strong className="caption">Best Price</strong>
-//                <button className="btn btn--purchase" onClick={() => {
-//                  addItem(product);
-//                  alert.show("Product added to the cart");
-//                  router.push("/cart");
-//                }}>Purchase</button>
-//              </div>
-//            </div>
 
             <div className="w-33”><strong className="caption">Best Price</strong><button><a href="www.startupkits.shop" className="btn btn—purchase” target="_blank">Purchase</a></button></div></div>
 
