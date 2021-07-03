@@ -82,8 +82,8 @@ const Header = ({ setBodyOverlay }) => {
                     </Link>
                   </li>
                   <li className="navigation__link page__link-shop">
-                    <Link href="http://www.startupkits.shop" target="_blank">
-                      <a className="link-wrap">
+                    <Link href="http://www.startupkits.shop">
+                      <a className="link-wrap" target="_blank">
                         <span className="link-title color--yellow">Handy</span> <span className="page-name">Shop</span>
                       </a>
                     </Link>
